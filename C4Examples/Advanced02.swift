@@ -17,9 +17,8 @@ class Advanced02: C4CanvasController {
         line = C4Line(linePoints)
         canvas.addPanGestureRecognizer({ (location, translation, velocity, state) -> () in
             
-            
-            self.line.a = self.canvas.center
-            self.line.b = location
+
+            self.line.endPoints = (self.canvas.center,location)
             self.line.strokeColor = C4Blue
             self.canvas.add(self.line)
             
