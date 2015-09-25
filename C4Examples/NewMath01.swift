@@ -9,179 +9,176 @@
 import C4
 import UIKit
 
-
 class NewMath01: C4CanvasController {
-    var shouldTrack = false
-    let circle = C4Circle(center: C4Point(), radius: 15)
-    var grayPath : C4Polygon!
-    var bluePath : C4Polygon!
-    var newPath : C4Polygon!
-    var maskPath : C4Polygon!
-    var distances = [Double]()
+    var mainPoints = [C4Point]()
+    var modifiedPoints = [C4Point]()
+    var insetFrame = C4Rect()
+    override func setup() {
+        let margin = canvas.frame.height * 0.1
+        insetFrame = inset(canvas.frame, dx: margin, dy: margin)
+        createPoints()
+
+        let path = MathComparePaths(frame: canvas.frame, insetFrame: insetFrame, points: mainPoints, modifiedPoints: modifiedPoints)
+        path.center = canvas.center
+        canvas.add(path)
+    }
+
+    func createPoints() {
+        var x = 0.0
+        repeat {
+            //normalize position of x to frame width
+            let nX = x / insetFrame.width
+            //define period for curve
+            let period = 2 * M_PI
+            //define scale (-1 inverts from CoreGraphics orientation)
+            let scale = -1 * insetFrame.height / 2.0
+            //define offset for y
+            let offset = insetFrame.height / 2.0
+            //calculate y
+            let my = abs(sin(nX * period)) * scale + offset
+            let y = sin(nX * period) * scale + offset
+
+
+            let mp = C4Point(x+insetFrame.origin.x,my+insetFrame.origin.y)
+            let p = C4Point(x+insetFrame.origin.x,y+insetFrame.origin.x)
+
+            //append the point to the array
+            modifiedPoints.append(mp)
+            mainPoints.append(p)
+            //increment x
+            x += 1.0
+        } while x < insetFrame.width
+    }
+}
+
+class MathComparePaths : C4View {
+    var whitePath : C4Shape?
+    var grayPath : C4Shape?
+    var maskPath : C4Shape?
+    var button : C4Shape?
+    var gradient : C4Gradient?
+
+    var mainPoints : [C4Point]?
+    var modifiedPoints : [C4Point]?
+    var distances = [0.0]
     var totalDistance = 0.0
     var dIndex = 0.0
-    var start = C4Point()
-    var end = C4Point()
-    
-    override func setup() {
+    var insetFrame = C4Rect()
+
+    convenience init(frame: C4Rect, insetFrame: C4Rect, points: [C4Point], modifiedPoints: [C4Point]) {
+        self.init()
+        self.frame = frame
+        self.insetFrame = insetFrame
+        self.mainPoints = points
+        self.modifiedPoints = modifiedPoints
+
+        calculateDistances()
+        createMaskPath()
+        createGradient()
+        createWhitePath()
         createGrayPath()
-        createNewPath()
-        createBluePath()
-        
+        createButton()
+
+        self.add(gradient)
+        self.add(grayPath)
+        self.add(whitePath)
+        self.add(button)
     }
-    
-    func createBluePath() {
-        var points = [C4Point]()
-        
-        var x = 0.0
-        C4ShapeLayer.disableActions = true
-        circle.strokeColor = clear
-        circle.shadow.opacity = 1.0
-        circle.shadow.offset = C4Size(0,2)
-        circle.shadow.radius = 1
-        circle.shadow.opacity = 0.5
-        circle.fillColor = white
-        C4ShapeLayer.disableActions = false
-        
-        repeat {
-            let calX = (x / canvas.width * 2.0 * M_PI)
-            var y = sin(calX)                // create Y
-            y *= 5                                        // zoom in (scale height to 5 points)
-            y = abs(y)                      // max value
-            
-            y *= 20                   //scale height to 20 points
-            y *= -1                    //invert for iOS screen coords
-            
-            if x == 0.0 {
-                circle.center = C4Point(x,y)
-                print(circle.center)
-                distances.append(0.0)
-                start = circle.center
-            }
-            
-            let point = C4Point(x,y)
-            if points.count > 0 {
-                let a = points.last!
-                let b = point
-                var d = distance(a, rhs: b)
+
+    func calculateDistances() {
+        if let mp = modifiedPoints {
+            var prev = mp.first!
+
+            for i in 1..<mp.count {
+                let curr = mp[i]
+                var d = distance(prev, rhs: curr)
                 d += distances.last!
                 distances.append(d)
+                prev = curr
             }
-            points.append(point)
-            x += 0.25
-        } while x < canvas.width
-        
-        end = points.last!
-        
-        totalDistance = distances.last!
-        dIndex = Double(distances.count) / 100.0
-        bluePath = C4Polygon(points)
-        bluePath.strokeColor = C4Blue
-        bluePath.fillColor = clear
-        bluePath.lineWidth = 35.0
-        bluePath.center = canvas.center
-        
-        C4ShapeLayer.disableActions = true
-        bluePath.strokeEnd = 0.0
-        C4ShapeLayer.disableActions = false
-        
-        maskPath = C4Polygon(points)
-        maskPath.strokeColor = C4Blue
-        maskPath.fillColor = clear
-        maskPath.lineWidth = 35.0
-        maskPath.center = canvas.center
-        maskPath.strokeEnd = 0.0
-        
-        let g = C4Gradient(frame: canvas.frame, colors: [C4Blue, C4Purple], locations: [0,1])
-        g.layer?.mask = maskPath.layer
-        g.startPoint = C4Point(start.x/canvas.width,start.y/canvas.height)
-        g.endPoint = C4Point(end.x/canvas.width,end.y/canvas.height)
-        g.interactionEnabled = false
-        canvas.add(g)
-        
-        canvas.add(bluePath)
-        bluePath.add(grayPath)
-        bluePath.add(newPath)
-        bluePath.add(circle)
-        
+
+            dIndex = Double(distances.count) / 100.0
+            totalDistance = distances.last!
+        }
+    }
+
+    func createGradient() {
+        let gr = C4Gradient(frame: frame, colors: [C4Blue,C4Purple], locations: [0,1])
+        gr.startPoint = C4Point(insetFrame.origin.x/width,0)
+        gr.endPoint = C4Point(insetFrame.max.x/width,0)
+        gradient = gr
+        gradient?.layer?.mask = maskPath?.layer
+    }
+
+    func createMaskPath() {
+        let mp = C4Polygon(modifiedPoints!)
+        mp.lineWidth = 35.0
+        mp.fillColor = clear
+        mp.strokeEnd = 0.00001
+        maskPath = mp
+    }
+
+    func createWhitePath() {
+        let wp = C4Polygon(modifiedPoints!)
+        wp.lineWidth = 2.0
+        wp.fillColor = clear
+        wp.strokeColor = white
+        wp.opacity = 0.15
+        whitePath = wp
+    }
+
+    func createGrayPath() {
+        let gp = C4Polygon(mainPoints!)
+        gp.lineWidth = 3.0
+        gp.fillColor = clear
+        gp.strokeColor = black
+        gp.opacity = 0.1
+        grayPath = gp
+    }
+
+    func createButton() {
+        var s = Shadow()
+        s.opacity = 1.0
+        s.offset = C4Size(0,2)
+        s.radius = 1
+        s.opacity = 0.5
+
+        let b = C4Circle(center: C4Point(), radius: 15)
+        b.fillColor = white
+        b.strokeColor = clear
+        b.center = modifiedPoints!.first!
+        b.shadow = s
+
         let kfa = CAKeyframeAnimation()
-        kfa.path = bluePath.path!.CGPath
+        kfa.path = maskPath?.path?.CGPath
         kfa.duration = 1.0
         kfa.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)]
-        
-        circle.layer?.addAnimation(kfa, forKey: "position")
-        circle.layer?.speed = 0.0
-        
-        circle.addPanGestureRecognizer { (location, translation, velocity, state) -> () in
+        b.layer?.addAnimation(kfa, forKey: "position")
+        b.layer?.speed = 0.0
+
+        button = b
+
+        button?.addPanGestureRecognizer { (location, translation, velocity, state) -> () in
             C4ShapeLayer.disableActions = true
-            let converted = self.canvas.convert(location, from: self.circle)
-            
-            let index = Int(converted.x / self.canvas.width * 100.0 * self.dIndex)
-            self.circle.layer?.timeOffset = CFTimeInterval(converted.x/self.canvas.width)
-            self.maskPath.strokeEnd = self.distances[index]/self.totalDistance
+            guard let b = self.button else {
+                print("Could not extract button")
+                return
+            }
+
+            var converted = self.convert(location, from: b)
+            converted.x -= self.insetFrame.origin.x
+            converted.x = clamp(converted.x, min: 0, max: self.insetFrame.width-0.01)
+            converted.x /= self.insetFrame.width
+            let index = Int(converted.x * 100.0 * self.dIndex)
+            b.layer?.timeOffset = CFTimeInterval(clamp(converted.x, min: 0, max: 1.0))
+
+            self.maskPath?.strokeEnd = clamp(self.distances[index]/self.totalDistance, min: 0.00001, max: 1.0)
+
             if state == .Ended {
-                if let pl = self.circle.layer?.presentationLayer() as? CALayer {
-                    self.circle.center = C4Point(pl.position)
+                if let pl = b.layer?.presentationLayer() as? CALayer {
+                    b.center = C4Point(pl.position)
                 }
             }
         }
-    }
-    func createGrayPath() {
-        var points = [C4Point]()
-        
-        var x = 0.0
-        
-        repeat {
-            let calX = (x / canvas.width * 2.0 * M_PI)
-            var y = sin(calX)                // create Y
-            y *= 5                                        // zoom in (scale height to 5 points)
-            y = abs(y)                      // max value
-            
-            y *= 20                   //scale height to 20 points
-            y *= -1                    //invert for iOS screen coords
-            if x == 0.0 {
-                circle.center = C4Point(x,y)
-            }
-            
-            let point = C4Point(x,y)
-            
-            points.append(point)
-            x += 0.25
-        } while x < canvas.width
-        
-        grayPath = C4Polygon(points)
-        grayPath.strokeColor = C4Color(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.15)
-        grayPath.fillColor = clear
-        grayPath.lineWidth = 2.0
-        grayPath.lineJoin = .Round
-        
-    }
-    func createNewPath() {
-        var points = [C4Point]()
-        
-        var x = 0.0
-        
-        repeat {
-            let calX = (x / canvas.width * 2.0 * M_PI)
-            var y = sin(calX)                // create Y
-            y *= 5                                        // zoom in (scale height to 5 points)
-            
-            y *= 20                   //scale height to 20 points
-            y *= -1                    //invert for iOS screen coords
-            if x == 0.0 {
-                circle.center = C4Point(x,y)
-            }
-            
-            let point = C4Point(x,y)
-            
-            points.append(point)
-            x += 0.25
-        } while x < canvas.width
-        
-        newPath = C4Polygon(points)
-        newPath.strokeColor = C4Color(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.10)
-        newPath.fillColor = clear
-        newPath.lineWidth = 3.0
-        
     }
 }
