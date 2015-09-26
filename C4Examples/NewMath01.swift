@@ -17,7 +17,6 @@ class NewMath01: C4CanvasController {
         let margin = canvas.frame.height * 0.1
         insetFrame = inset(canvas.frame, dx: margin, dy: margin)
         createPoints()
-
         let path = MathComparePaths(frame: canvas.frame, insetFrame: insetFrame, points: mainPoints, modifiedPoints: modifiedPoints)
         path.center = canvas.center
         canvas.add(path)
@@ -26,13 +25,10 @@ class NewMath01: C4CanvasController {
     func createPoints() {
         var x = 0.0
         repeat {
-            //calculate y
             let y = sin(x * 2 * M_PI) * -1 //-1 inverts from iOS coordinates to normal cartesian
             let my = abs(y) * -1 //same as above
-            //append the points to the array
             modifiedPoints.append(C4Point(x,my))
             mainPoints.append(C4Point(x,y))
-            //increment x
             x += 0.001
         } while x < 1
     }
@@ -67,10 +63,7 @@ class MathComparePaths : C4View {
         createGrayPath()
         createButton()
 
-        self.add(gradient)
-        self.add(grayPath)
-        self.add(whitePath)
-        self.add(button)
+        self.add([gradient,grayPath,whitePath,button])
     }
 
     func transformPoints() {
@@ -88,7 +81,6 @@ class MathComparePaths : C4View {
     func calculateDistances() {
         if let mp = modifiedPoints {
             var prev = mp.first!
-
             for i in 1..<mp.count {
                 let curr = mp[i]
                 var d = distance(prev, rhs: curr)
