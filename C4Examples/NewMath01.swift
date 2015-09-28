@@ -17,7 +17,6 @@ class NewMath01: C4CanvasController {
         let margin = canvas.frame.height * 0.1
         insetFrame = inset(canvas.frame, dx: margin, dy: margin)
         createPoints()
-
         let path = MathComparePaths(frame: canvas.frame, insetFrame: insetFrame, points: mainPoints, modifiedPoints: modifiedPoints)
         path.center = canvas.center
         canvas.add(path)
@@ -26,28 +25,12 @@ class NewMath01: C4CanvasController {
     func createPoints() {
         var x = 0.0
         repeat {
-            //normalize position of x to frame width
-            let nX = x / insetFrame.width
-            //define period for curve
-            let period = 2 * M_PI
-            //define scale (-1 inverts from CoreGraphics orientation)
-            let scale = -1 * insetFrame.height / 2.0
-            //define offset for y
-            let offset = insetFrame.height / 2.0
-            //calculate y
-            let my = abs(sin(nX * period)) * scale + offset
-            let y = sin(nX * period) * scale + offset
-
-
-            let mp = C4Point(x+insetFrame.origin.x,my+insetFrame.origin.y)
-            let p = C4Point(x+insetFrame.origin.x,y+insetFrame.origin.x)
-
-            //append the point to the array
-            modifiedPoints.append(mp)
-            mainPoints.append(p)
-            //increment x
-            x += 1.0
-        } while x < insetFrame.width
+            let y = sin(x * 2 * M_PI) * -1 //-1 inverts from iOS coordinates to normal cartesian
+            let my = abs(y) * -1 //same as above
+            modifiedPoints.append(C4Point(x,my))
+            mainPoints.append(C4Point(x,y))
+            x += 0.001
+        } while x < 1
     }
 }
 
@@ -72,6 +55,7 @@ class MathComparePaths : C4View {
         self.mainPoints = points
         self.modifiedPoints = modifiedPoints
 
+        transformPoints()
         calculateDistances()
         createMaskPath()
         createGradient()
@@ -79,16 +63,24 @@ class MathComparePaths : C4View {
         createGrayPath()
         createButton()
 
-        self.add(gradient)
-        self.add(grayPath)
-        self.add(whitePath)
-        self.add(button)
+        self.add([gradient,grayPath,whitePath,button])
+    }
+
+    func transformPoints() {
+        assert(mainPoints != nil, "mainPoints couldn't be extracted")
+
+        var t = C4Transform.makeTranslation(C4Vector(x: insetFrame.origin.x, y: insetFrame.center.y))
+        t.scale(insetFrame.width, insetFrame.height/2.0)
+
+        for i in 0..<mainPoints!.count {
+            mainPoints![i].transform(t)
+            modifiedPoints![i].transform(t)
+        }
     }
 
     func calculateDistances() {
         if let mp = modifiedPoints {
             var prev = mp.first!
-
             for i in 1..<mp.count {
                 let curr = mp[i]
                 var d = distance(prev, rhs: curr)
@@ -155,7 +147,7 @@ class MathComparePaths : C4View {
         kfa.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)]
         b.layer?.addAnimation(kfa, forKey: "position")
         b.layer?.speed = 0.0
-
+        b.layer?.timeOffset = 0.0
         button = b
 
         button?.addPanGestureRecognizer { (location, translation, velocity, state) -> () in
