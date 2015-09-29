@@ -18,14 +18,13 @@ class NewMath01: C4CanvasController {
         insetFrame = inset(canvas.frame, dx: margin, dy: margin)
         createPoints()
         let path = MathComparePaths(frame: canvas.frame, insetFrame: insetFrame, points: mainPoints, modifiedPoints: modifiedPoints)
-        path.center = canvas.center
         canvas.add(path)
     }
 
     func createPoints() {
         var x = 0.0
         repeat {
-            let y = sin(x * 2 * M_PI) * -1 //-1 inverts from iOS coordinates to normal cartesian
+            let y = (sin(x * 2 * M_PI) * -1)//-1 inverts from iOS coordinates to normal cartesian
             let my = abs(y) * -1 //same as above
             modifiedPoints.append(C4Point(x,my))
             mainPoints.append(C4Point(x,y))
@@ -33,5 +32,6 @@ class NewMath01: C4CanvasController {
         } while x < 1
     }
 }
+
 
 
