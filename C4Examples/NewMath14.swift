@@ -23,11 +23,12 @@ class NewMath14: C4CanvasController {
     func createPoints() {
         var x = 0.0
         repeat {
-            let y = (clamp(tan(x * 2 * M_PI), min: -self.insetFrame.size.height, max: self.insetFrame.size.height))//-1 inverts from iOS coordinates to normal cartesian
-            let my = y
-            modifiedPoints.append(C4Point(x,my))
-            mainPoints.append(C4Point(x,y))
-            x += 0.001
-        } while x < 1
+            let y = clamp(tan(x), min: -M_PI, max: M_PI)
+            let mappedX = map(x, min: 0, max: 2*M_PI, toMin: 0, toMax: 1)
+            let mappedY = map(y, min: -M_PI, max: M_PI, toMin: -1, toMax: 1) * -1.0
+            modifiedPoints.append(C4Point(mappedX,mappedY))
+            mainPoints.append(C4Point(mappedX,mappedY))
+            x += 2 * M_PI/1000.0
+        } while x < 2 * M_PI
     }
 }

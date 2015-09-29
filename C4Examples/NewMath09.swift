@@ -29,6 +29,6 @@ class NewMath09: C4CanvasController {
             modifiedPoints.append(C4Point(x,my))
             mainPoints.append(C4Point(x,y))
             x += 0.001
-        } while x < 1
+        } while x < 1.001
     }
 }
