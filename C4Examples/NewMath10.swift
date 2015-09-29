@@ -25,7 +25,7 @@ class NewMath10: C4CanvasController {
         var x = 0.0
         repeat {
             let y = sin(x * 2 * M_PI) * -1//-1 inverts from iOS coordinates to normal cartesian
-            let my = y //same as above
+            let my = map(y, min: -1, max: 1, toMin: insetFrame.center.y + 100, toMax: insetFrame.center.y - 100) //same as above
             modifiedPoints.append(C4Point(x,my))
             mainPoints.append(C4Point(x,y))
             x += 0.001
