@@ -17,37 +17,21 @@ class NewMath02: C4CanvasController {
         let margin = canvas.frame.size.height * 0.1
         insetFrame = inset(canvas.frame, dx: margin, dy: margin)
         createPoints()
-        
         let path = MathComparePaths(frame: canvas.frame, insetFrame: insetFrame, points: mainPoints, modifiedPoints: modifiedPoints)
-        path.center = canvas.center
         canvas.add(path)
     }
     
     func createPoints() {
         var x = 0.0
         repeat {
-            //normalize position of x to frame width
-            let nX = x / insetFrame.size.width
-            //define period for curve
-            
-            let period = 0.7
-            //define scale (-1 inverts from CoreGraphics orientation)
-            let scale = -1 * insetFrame.size.height / 2.0
-            //define offset for y
-            let offset = insetFrame.size.height / 2.0
-            //calculate y
-            let my = (acos(nX * period)) * scale + offset
-            let y = acos(nX * period) * scale + offset
-            
-            
-            let mp = C4Point(x+insetFrame.origin.x,my+insetFrame.origin.y)
-            let p = C4Point(x+insetFrame.origin.x,y+insetFrame.origin.x)
-            
-            //append the point to the array
-            modifiedPoints.append(mp)
-            mainPoints.append(p)
-            //increment x
-            x += 1.0
-        } while x < insetFrame.size.width
+            let y = acos(x * 2 * 0.5) * -1//-1 inverts from iOS coordinates to normal cartesian
+            let my = y //same as above
+            modifiedPoints.append(C4Point(x,my))
+            mainPoints.append(C4Point(x,y))
+            x += 0.001
+        } while x < 1
     }
 }
+
+
+
