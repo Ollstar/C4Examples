@@ -37,8 +37,10 @@ class Shapes09: C4CanvasController {
         //animate them after a short delay
         
         let anim = C4ViewAnimation(duration:1.0) {
-            line1.endPoints.0 = C4Point(line1.endPoints.0.x,line1.endPoints.0.y-100)
-            line2.endPoints.1 = C4Point(line2.endPoints.0.x,line2.endPoints.1.y+100)
+            line1.endPoints = (line1.endPoints.0,C4Point(line1.endPoints.0.x, line1.endPoints.0.y-100))
+
+           line2.endPoints = (C4Point(line2.endPoints.1.x, line2.endPoints.1.y+100), line2.endPoints.1)
+
         }
         
         anim.repeats = true
