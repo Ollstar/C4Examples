@@ -24,9 +24,10 @@ class NewMath12: C4CanvasController {
     func createPoints() {
         var x = 0.0
         repeat {
-            let y = sin(x * 2 * M_PI) * -1//-1 inverts from iOS coordinates to normal cartesian
-            let my = min(sin(x * 2 * M_PI), 0.25) * -1// -1 inverts from iOS coordinates to normal cartesian max value
-            modifiedPoints.append(C4Point(x,my))
+            var y = sin(x * 2 * M_PI)
+            let mappedY = min(y, 0.5) * -1
+            y *= -1.0
+            modifiedPoints.append(C4Point(x,mappedY))
             mainPoints.append(C4Point(x,y))
             x += 0.001
         } while x < 1

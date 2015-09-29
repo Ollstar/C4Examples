@@ -13,10 +13,9 @@ class ViewController: C4CanvasController {
     
     
     override func setup() {
-        let example = NewMath04()
+        let example = Math16()
         self.addChildViewController(example)
         canvas.add(example.canvas)
-        
     }
     
 }
