@@ -1,0 +1,52 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "Interaction03"
+provides-nominal:
+- "C10C4Examples13Interaction03"
+provides-member:
+- ["C10C4Examples13Interaction03", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "C4Color"
+- "C4Circle"
+- !private "random01"
+- !private "+="
+- !private "-="
+- "Interaction03"
+- "C4CanvasController"
+- "C4Shape"
+- !private "IntegerLiteralType"
+depends-member:
+- !private ["PSs9AnyObject", "C4Circle"]
+- !private ["PSs9AnyObject", "C4Color"]
+- !private ["PSs9AnyObject", "canvas"]
+- !private ["PSs9AnyObject", "random01"]
+- !private ["PSs9AnyObject", "s1"]
+- !private ["PSs9AnyObject", "s2"]
+- !private ["PSs9AnyObject", "s3"]
+- ["PSs9AnyObject", ""]
+- ["C10C4Examples13Interaction03", "C4Circle"]
+- !private ["C10C4Examples13Interaction03", "C4Color"]
+- ["C10C4Examples13Interaction03", "C4Shape"]
+- !private ["C10C4Examples13Interaction03", "canvas"]
+- ["C10C4Examples13Interaction03", "deinit"]
+- ["C10C4Examples13Interaction03", "init"]
+- !private ["C10C4Examples13Interaction03", "random01"]
+- !private ["C10C4Examples13Interaction03", "s1"]
+- !private ["C10C4Examples13Interaction03", "s2"]
+- !private ["C10C4Examples13Interaction03", "s3"]
+- ["C10C4Examples13Interaction03", "setup"]
+depends-nominal:
+- "PSs9AnyObject"
+- "C10C4Examples13Interaction03"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+interface-hash: "d22c75ce8f6636317fe3b29f32fe7c2f"

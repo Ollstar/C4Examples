@@ -1,0 +1,46 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "AudioPlayer03"
+provides-nominal:
+- "C10C4Examples13AudioPlayer03"
+provides-member:
+- ["C10C4Examples13AudioPlayer03", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "String"
+- "C4CanvasController"
+- !private "C4TextShape"
+- "C4AudioPlayer"
+- !private "C4Font"
+- "AudioPlayer03"
+depends-member:
+- !private ["PSs9AnyObject", "C4AudioPlayer"]
+- !private ["PSs9AnyObject", "C4Font"]
+- !private ["PSs9AnyObject", "C4TextShape"]
+- !private ["PSs9AnyObject", "String"]
+- !private ["PSs9AnyObject", "audioPlayer"]
+- !private ["PSs9AnyObject", "canvas"]
+- ["PSs9AnyObject", ""]
+- ["C10C4Examples13AudioPlayer03", "C4AudioPlayer"]
+- !private ["C10C4Examples13AudioPlayer03", "C4Font"]
+- !private ["C10C4Examples13AudioPlayer03", "C4TextShape"]
+- !private ["C10C4Examples13AudioPlayer03", "String"]
+- !private ["C10C4Examples13AudioPlayer03", "audioPlayer"]
+- !private ["C10C4Examples13AudioPlayer03", "canvas"]
+- ["C10C4Examples13AudioPlayer03", "deinit"]
+- ["C10C4Examples13AudioPlayer03", "init"]
+- ["C10C4Examples13AudioPlayer03", "setup"]
+depends-nominal:
+- "PSs9AnyObject"
+- "C10C4Examples13AudioPlayer03"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+interface-hash: "0f8dcc2638be4820e5d140bdb74c620d"
