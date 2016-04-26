@@ -8,17 +8,17 @@
 
 import C4
 
-class Views19: C4CanvasController {
+class Views19: CanvasController {
     
-    var s:C4Rectangle!
-    var img:C4Image!
+    var s:Rectangle!
+    var img:Image!
     
     override func setup() {
         
-        img = C4Image("ollie_pic")
-        s = C4Rectangle(frame: C4Rect(0,0,400,50))
+        img = Image("ollie_pic")
+        s = Rectangle(frame: Rect(0,0,400,50))
         img.center = self.canvas.center
-        s.center = C4Point(img.width/2 ,img.height/2)
+        s.center = Point(img.width/2 ,img.height/2)
         
         
         
@@ -27,13 +27,13 @@ class Views19: C4CanvasController {
         self.canvas.add(img)
         self.img.interactionEnabled = false
         
-        let a = C4ViewAnimation(duration: 1.5) {
+        let a = ViewAnimation(duration: 1.5) {
             self.s.transform.rotate(M_PI)
             
         }
         a.repeats = true
         a.curve = .Linear
-        delay(0.1) {
+        wait(0.1) {
             a.animate()
         }
         

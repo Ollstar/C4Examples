@@ -9,11 +9,11 @@
 import C4
 import UIKit
 
-class Colors09: C4CanvasController {
+class Colors09: CanvasController {
     
-    var red:C4Rectangle!
-    var blue:C4Rectangle!
-    var grey:C4Rectangle!
+    var red:Rectangle!
+    var blue:Rectangle!
+    var grey:Rectangle!
     var redColorComponents:[Double]!
     var blueColorComponents:[Double]!
     var greyColorComponents:[Double]!
@@ -26,10 +26,10 @@ class Colors09: C4CanvasController {
     }
     
     func setupShapes() {
-        let frame = C4Rect(0, 0, self.canvas.width*0.9, self.canvas.height/5.0)
-        red =  C4Rectangle(frame: frame)
-        blue =  C4Rectangle(frame: frame)
-        grey =  C4Rectangle(frame: frame)
+        let frame = Rect(0, 0, self.canvas.width*0.9, self.canvas.height/5.0)
+        red =  Rectangle(frame: frame)
+        blue =  Rectangle(frame: frame)
+        grey =  Rectangle(frame: frame)
         
         red.fillColor  = C4Pink
         blue.fillColor = C4Blue
@@ -40,9 +40,9 @@ class Colors09: C4CanvasController {
         grey.lineWidth = 1.0
         grey.strokeColor = lightGray//allows us to see the 3rd rectangle
         
-        red.center  = C4Point(self.canvas.center.x, self.canvas.height/4)
-        blue.center = C4Point(self.canvas.center.x, self.canvas.height*2/4)
-        grey.center = C4Point(self.canvas.center.x, self.canvas.height*3/4)
+        red.center  = Point(self.canvas.center.x, self.canvas.height/4)
+        blue.center = Point(self.canvas.center.x, self.canvas.height*2/4)
+        grey.center = Point(self.canvas.center.x, self.canvas.height*3/4)
         
         self.canvas.add(red)
         self.canvas.add(blue)
@@ -51,26 +51,26 @@ class Colors09: C4CanvasController {
     }
     
     func setupLabels() {
-        let f = C4Font(name: "ArialRoundedMTBold", size: 30.0)
-        var l:C4TextShape!
+        let f = Font(name: "ArialRoundedMTBold", size: 30.0)!
+        var l:TextShape!
         
         var colorString = "\(red.fillColor!.red),\(red.fillColor!.green),\(red.fillColor!.blue),\(red.fillColor!.alpha)"
         
-        l = C4TextShape(text: colorString, font: f)
+        l = TextShape(text: colorString, font: f)
         l.fillColor = white
         l.center = red.center;
         self.canvas.add(l)
         
         colorString = "\(blue.fillColor!.red),\(blue.fillColor!.green),\(blue.fillColor!.blue),\(blue.fillColor!.alpha)"
         
-        l = C4TextShape(text: colorString, font: f)
+        l = TextShape(text: colorString, font: f)
         l.fillColor = white
         l.center = blue.center;
         self.canvas.add(l)
         
         colorString = "\(grey.fillColor!.red),\(grey.fillColor!.green),\(grey.fillColor!.blue),\(red.fillColor!.alpha)"
         
-        l = C4TextShape(text: colorString, font: f)
+        l = TextShape(text: colorString, font: f)
         l.fillColor = lightGray
         l.center = grey.center;
         self.canvas.add(l)

@@ -9,18 +9,18 @@
 import C4
 import UIKit
 
-class Views09: C4CanvasController {
+class Views09: CanvasController {
     
-    var circle:C4Circle!
+    var circle:Circle!
     
     
     override func setup() {
         
-        circle = C4Circle(center: self.canvas.center, radius: 44)
+        circle = Circle(center: self.canvas.center, radius: 44)
         circle.lineWidth = 40
         self.canvas.add(circle)
         
-        canvas.addTapGestureRecognizer { (location, state) -> () in
+        canvas.addTapGestureRecognizer { (center, location, state) -> () in
             self.circle.view.clipsToBounds = !self.circle.view.clipsToBounds
         }
     }

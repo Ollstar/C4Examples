@@ -9,9 +9,9 @@
 import C4
 import UIKit
 
-class Math03: C4CanvasController {
+class Math03: CanvasController {
     
-    var pathShape:C4Polygon!
+    var pathShape:Polygon!
     var slider = UISlider()
     
     
@@ -20,7 +20,7 @@ class Math03: C4CanvasController {
         createAndAddSlider()
     }
     
-    func sinePointsFor(x:Double) -> C4Point {
+    func sinePointsFor(x:Double) -> Point {
         // for asin we need to change the scope of x to [-1 to 1] (instead of [0 to TWO_PI]).
         let calX = ((x/self.canvas.width)-0.5)*2.0   // calibrated to [-1 to 1]
         var y = asin(calX)                    // create Y
@@ -33,7 +33,7 @@ class Math03: C4CanvasController {
         // http://www.weizmann.ac.il/matlab/techdoc/ref/acos.gif
         // so it doesn't look "centered" on the screen, but it's because it reaches x = 1 when y = 0
         
-        return C4Point(x,y)
+        return Point(x,y)
     }
     
     func createAndAddSlider() {
@@ -47,7 +47,7 @@ class Math03: C4CanvasController {
     func createAndAddPathShapes() {
         let stepWidth = 1
         let steps = Int(self.canvas.width) / stepWidth + 1
-        var p = [C4Point]()
+        var p = [Point]()
         
         for i in 0..<steps {
             
@@ -57,7 +57,7 @@ class Math03: C4CanvasController {
             
         }
         
-        pathShape = C4Polygon(p)
+        pathShape = Polygon(p)
         pathShape.view.userInteractionEnabled = false
         pathShape.fillColor = clear
         pathShape.strokeEnd = Double(slider.value)

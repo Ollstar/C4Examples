@@ -8,20 +8,20 @@
 
 import C4
 
-class AudioPlayer03: C4CanvasController {
+class AudioPlayer03: CanvasController {
     
-    var audioPlayer:C4AudioPlayer!
+    var audioPlayer:AudioPlayer!
     
     override func setup() {
         
-        audioPlayer = C4AudioPlayer("soundTest.mp3")
-        let font = C4Font(name: "Helvetica", size: 30.0)
+        audioPlayer = AudioPlayer("soundTest.mp3")
+        let font = Font(name: "Helvetica", size: 30.0)!
         //create text shape to display duration of mp3
-        let l = C4TextShape(text: String(audioPlayer.duration), font: font)
+        let l = TextShape(text: String(audioPlayer.duration), font: font)!
         l.center = self.canvas.center
         self.canvas.add(l)
         
-        self.canvas.addTapGestureRecognizer { (location, state) -> () in
+        self.canvas.addTapGestureRecognizer { (center, location, state) -> () in
             
             //playing returns true if the receiver's current playback rate > 0. Otherwise returns false.
             if self.audioPlayer.playing == false{

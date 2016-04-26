@@ -9,16 +9,16 @@
 import C4
 import UIKit
 
-class Math05: C4CanvasController {
+class Math05: CanvasController {
     
-    var p:C4Point!
-    var shapes:[C4Shape]!
+    var p:Point!
+    var shapes:[Shape]!
     var numberOfColumns:Double!
     var numberOfRows:Double!
     
     override func setup() {
         
-        shapes = [C4Shape]()
+        shapes = [Shape]()
         
         numberOfColumns = 5
         numberOfRows = 5
@@ -26,12 +26,12 @@ class Math05: C4CanvasController {
         for i in 0..<Int(numberOfColumns) {
             for j in 0..<Int(numberOfRows) {
                 
-                let shape = C4Rectangle(frame: C4Rect(0,0,50,16))//height must be greater than 16 or the cornerRadiusHeight * 2
-                shape.anchorPoint = C4Point(0.0,0.5)
+                let shape = Rectangle(frame: Rect(0,0,50,16))//height must be greater than 16 or the cornerRadiusHeight * 2
+                shape.anchorPoint = Point(0.0,0.5)
                 let newX = ((self.canvas.width/numberOfColumns) * Double(i)) + ((self.canvas.width/numberOfColumns)/2)
                 let newY = ((self.canvas.height/numberOfRows) * Double(j)) + ((self.canvas.height/numberOfRows)/2);
                 
-                shape.center = C4Point(newX, newY)
+                shape.center = Point(newX, newY)
                 shape.view.userInteractionEnabled = false
                 shape.strokeColor = clear
                 shapes.append(shape)
@@ -51,8 +51,8 @@ class Math05: C4CanvasController {
             shape.transform.rotate(arctangent)
         }
     }
-    func c4pointFromCGPoint(point:CGPoint) -> C4Point {
-        var newPoint = C4Point()
+    func c4pointFromCGPoint(point:CGPoint) -> Point {
+        var newPoint = Point()
         newPoint.x = Double(point.x)
         newPoint.y = Double(point.y)
         return newPoint

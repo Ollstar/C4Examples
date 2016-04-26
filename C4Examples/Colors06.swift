@@ -9,31 +9,31 @@
 import C4
 import UIKit
 
-class Colors06: C4CanvasController {
+class Colors06: CanvasController {
     
     //we use an array of shapes and for() loops to set styles
-    var shapes = [C4Shape]()
+    var shapes = [Shape]()
     
     override func setup() {
         setupShapes()
         setupLabels()
         
-        //We cast each object in the array to a C4Shape object, and then set its color
-        shapes[0].fillColor = C4Color(UIColor.darkTextColor())
+        //We cast each object in the array to a Shape object, and then set its color
+        shapes[0].fillColor = Color(UIColor.darkTextColor())
         //lightTextColor is actually white with 60% opacity
-        shapes[1].fillColor = C4Color(UIColor.lightTextColor())
+        shapes[1].fillColor = Color(UIColor.lightTextColor())
         //on iPad groupTableViewBackgroundColor is equivalent to [UIColor clearColor]
-        shapes[2].fillColor = C4Color(UIColor.groupTableViewBackgroundColor())
+        shapes[2].fillColor = Color(UIColor.groupTableViewBackgroundColor())
         
     }
     
     func setupShapes() {
         //create a frame for building each shape
-        let frame = C4Rect(0, 0, self.canvas.width*0.9, self.canvas.height/20.0)
+        let frame = Rect(0, 0, self.canvas.width*0.9, self.canvas.height/20.0)
         
         //create an array of 15 shapes
         for _ in 0...2 {
-            shapes.append(C4Rectangle(frame: frame))
+            shapes.append(Rectangle(frame: frame))
             
         }
         
@@ -52,8 +52,8 @@ class Colors06: C4CanvasController {
         
         //[UIColor lightTextColor] is actually WHITE, with a 0.6 opacity
         //So, we set it to darkTextColor to see the difference between it and it's label
-        shapes[1].backgroundColor = C4Color(UIColor.darkTextColor())
-        shapes[2].shadow.offset = C4Size(5,5)
+        shapes[1].backgroundColor = Color(UIColor.darkTextColor())
+        shapes[2].shadow.offset = Size(5,5)
         shapes[2].shadow.opacity = 0.8
         shapes[2].lineWidth = 1.0
         shapes[2].strokeColor = C4Grey
@@ -62,15 +62,15 @@ class Colors06: C4CanvasController {
     
     func setupLabels() {
         //create a font for the labels
-        let f = C4Font(name: "ArialRoundedMTBold", size: 20.0)
-        var l:C4TextShape!
+        let f = Font(name: "ArialRoundedMTBold", size: 20.0)!
+        var l:TextShape!
         
         //create an array of texts for the label
         let labelTexts = ["Dark", "Light", "Grouped"]
         
         //create a label for each shape and add it to the canvas
         for i in 0..<labelTexts.count {
-            l = C4TextShape(text: labelTexts[i], font: f)
+            l = TextShape(text: labelTexts[i], font: f)
             //all labels will be white except the last two
             if(i < 2) {
                 l.fillColor = white

@@ -8,17 +8,17 @@
 
 import C4
 
-class AudioPlayer04: C4CanvasController {
+class AudioPlayer04: CanvasController {
     
-    var audioPlayer:C4AudioPlayer!
+    var audioPlayer:AudioPlayer!
     
     override func setup() {
         
-        audioPlayer = C4AudioPlayer("soundTest.mp3")
+        audioPlayer = AudioPlayer("soundTest.mp3")
         audioPlayer.enableRate = true
         audioPlayer.rate = 1
         
-        self.canvas.addTapGestureRecognizer { (location, state) -> () in
+        self.canvas.addTapGestureRecognizer { (center, location, state) -> () in
             
             //playing returns true if the receiver's current playback rate > 0. Otherwise returns false.
             if self.audioPlayer.playing == false{

@@ -8,10 +8,10 @@
 
 import C4
 
-class Interaction01: C4CanvasController {
+class Interaction01: CanvasController {
     
-    let s1 = C4Circle(center: C4Point(), radius: 50)
-    let s2 = C4Circle(center: C4Point(), radius: 50)
+    let s1 = Circle(center: Point(), radius: 50)
+    let s2 = Circle(center: Point(), radius: 50)
 
     override func setup() {
 
@@ -21,15 +21,15 @@ class Interaction01: C4CanvasController {
         s2.center = self.canvas.center
         s2.center.y += 75
 
-        s1.addTapGestureRecognizer { (location, state) -> () in
+        s1.addTapGestureRecognizer { (center,location, state) -> () in
             self.s1.fillColor = C4Pink
             self.s1.post("tapped")
         }
-        s2.addTapGestureRecognizer { (location, state) -> () in
+        s2.addTapGestureRecognizer { (center,location, state) -> () in
             self.s2.fillColor = C4Blue
             self.s2.post("tapped")
         }
-        canvas.addTapGestureRecognizer { (location, state) -> () in
+        canvas.addTapGestureRecognizer { (center,location, state) -> () in
             self.canvas.backgroundColor = C4Grey
             self.canvas.layer?.post("tapped")
         }

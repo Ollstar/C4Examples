@@ -8,9 +8,9 @@
 
 import C4
 
-class Views03: C4CanvasController {
+class Views03: CanvasController {
     override func setup() {
-        let img = C4Image("ollie_pic")
+        let img = Image("ollie_pic")!
         img.center = self.canvas.center
         img.border.width = 10.0
         img.border.color = C4Pink

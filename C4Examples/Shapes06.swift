@@ -9,29 +9,29 @@
 import C4
 import UIKit
 
-class Shapes06 : C4CanvasController {
+class Shapes06 : CanvasController {
     
-    var defaultColorShape:C4Ellipse!
-    var customColorShape:C4Ellipse!
+    var defaultColorShape:Ellipse!
+    var customColorShape:Ellipse!
     
     override func setup() {
         
-        var p:C4Point = self.canvas.center;
+        var p:Point = self.canvas.center;
         
         //create and position the shape with default colors
-        let r = C4Rect(0,0,200,200)
-        defaultColorShape = C4Ellipse(frame: r)
+        let r = Rect(0,0,200,200)
+        defaultColorShape = Ellipse(frame: r)
         p.y = self.canvas.height / 3;
         defaultColorShape.center = p;
         
         //create and position the shape with custom colors
-        customColorShape = C4Ellipse(frame: r)
+        customColorShape = Ellipse(frame: r)
         p.y = self.canvas.height * 2 / 3
         customColorShape.center = p
         
         //set the fill and stroke colors for the custom shape
-        customColorShape.fillColor = C4Color.init(UIColor.grayColor())
-        customColorShape.strokeColor = C4Color.init(UIColor.greenColor())
+        customColorShape.fillColor = Color.init(UIColor.grayColor())
+        customColorShape.strokeColor = Color.init(UIColor.greenColor())
         
         //add the shapes to the canvas
         self.canvas.add(defaultColorShape)

@@ -9,12 +9,12 @@
 import UIKit
 import C4
 
-class Shapes20: C4CanvasController {
+class Shapes20: CanvasController {
     
     override func setup() {
         
         //create and array of points to use for lines
-        var linePoints = [C4Point(),C4Point(self.canvas.width,0.0)]
+        var linePoints = [Point(),Point(self.canvas.width,0.0)]
         
         //figure out the total number of lines to draw
         let totalLineCount = self.canvas.height / 6.0 //default lineWidth (5.0f) + 1.0f gap between each line
@@ -26,7 +26,7 @@ class Shapes20: C4CanvasController {
             linePoints[1].y = linePoints[0].y
             
             //create a new line
-            let newLine = C4Line(linePoints)
+            let newLine = Line(linePoints)
             
             //determine the current displacement of the ends of the line
             let currentDisplacement = strokeDisplacement*Double(i+1)

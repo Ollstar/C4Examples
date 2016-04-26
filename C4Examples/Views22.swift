@@ -8,10 +8,10 @@
 
 import C4
 
-class Views22: C4CanvasController {
+class Views22: CanvasController {
     
-    var s1:C4Rectangle!
-    var s2:C4Rectangle!
+    var s1:Rectangle!
+    var s2:Rectangle!
     
     override func setup() {
         
@@ -20,10 +20,10 @@ class Views22: C4CanvasController {
     }
     
     func setupShapes() {
-        let rect = C4Rect(0, 0, 300, 75);
+        let rect = Rect(0, 0, 300, 75);
         
-        s1 = C4Rectangle(frame: rect)
-        s2 = C4Rectangle(frame: rect)
+        s1 = Rectangle(frame: rect)
+        s2 = Rectangle(frame: rect)
         s2.strokeColor = C4Pink
         
         let currentCenter = self.canvas.center

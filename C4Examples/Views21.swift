@@ -8,10 +8,10 @@
 
 import C4
 
-class Views21: C4CanvasController {
+class Views21: CanvasController {
     
-    var still:C4Image!
-    var animated:C4Image!
+    var still:Image!
+    var animated:Image!
     
     
     override func setup() {
@@ -21,13 +21,13 @@ class Views21: C4CanvasController {
     }
     
     func setupImages() {
-    still = C4Image("ollie_pic")
+    still = Image("ollie_pic")
     still.height = 240.0
     still.center = self.canvas.center
 self.canvas.add(still)
         //NOTE: You need to have the following images in your project
     // You can replace these names with any image sequence
-//    animated = [C4Image animatedImageWithNames:@[
+//    animated = [Image animatedImageWithNames:@[
 //    @"C4Spin00.png",
 //    @"C4Spin01.png",
 //    @"C4Spin02.png",

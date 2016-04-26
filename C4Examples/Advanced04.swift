@@ -9,19 +9,19 @@
 import C4
 import UIKit
 
-class Advanced04: C4CanvasController {
+class Advanced04: CanvasController {
     
     
-    var circle:C4Circle!
+    var circle:Circle!
     var pink:Double!
     var blue:Double!
     var grey:Double!
     var pc = 0
     var bc = 0
     var gc = 0
-    var pl = C4TextShape()
-    var bl = C4TextShape()
-    var gl = C4TextShape()
+    var pl = TextShape(text: "")
+    var bl = TextShape(text: "")
+    var gl = TextShape(text: "")
     
     override func setup() {
         // percent chance of each color being chosen (total must equal 100)
@@ -31,7 +31,7 @@ class Advanced04: C4CanvasController {
         
         setupCircle()
         updateLabels()
-        delay(1.0) {
+        wait(1.0) {
             self.changeColors()
         }
         self.canvas.add(circle)
@@ -41,11 +41,11 @@ class Advanced04: C4CanvasController {
         weightedProbability()
         updateLabels()
         circle.strokeEnd = 0.0
-        let a = C4ViewAnimation(duration:1.3) {
+        let a = ViewAnimation(duration:1.3) {
         self.circle.strokeEnd = 1.0
         }
         a.animate()
-        delay(1.5) {
+        wait(1.5) {
             self.changeColors()
         }
     }
@@ -67,12 +67,12 @@ class Advanced04: C4CanvasController {
     }
     
     func setupCircle() {
-        circle = C4Circle(center: self.canvas.center, radius: 100)
-        let a = C4ViewAnimation(duration: 1.0) {
-        self.circle.strokeColor = C4Color(UIColor.blackColor())
+        circle = Circle(center: self.canvas.center, radius: 100)
+        let a = ViewAnimation(duration: 1.0) {
+        self.circle.strokeColor = Color(UIColor.blackColor())
         self.circle.transform.rotate(-M_PI/2)
         self.circle.lineWidth = 10.0
-        self.circle.fillColor = C4Color(UIColor.clearColor())
+        self.circle.fillColor = Color(UIColor.clearColor())
         }
         a.animate()
     }
@@ -86,9 +86,9 @@ class Advanced04: C4CanvasController {
         let bs = "Blue has been chosen \(bc) times"
         let gs = "Grey has been chosen \(gc) times"
         
-        pl = C4TextShape(text: ps, font: C4Font(name: "Helvetica", size: 14.0))
-        bl = C4TextShape(text: bs, font: C4Font(name: "Helvetica", size: 14.0))
-        gl = C4TextShape(text: gs, font: C4Font(name: "Helvetica", size: 14.0))
+        pl = TextShape(text: ps, font: Font(name: "Helvetica", size: 14.0)!)!
+        bl = TextShape(text: bs, font: Font(name: "Helvetica", size: 14.0)!)!
+        gl = TextShape(text: gs, font: Font(name: "Helvetica", size: 14.0)!)!
         
         self.canvas.add(pl)
         self.canvas.add(bl)
@@ -96,11 +96,11 @@ class Advanced04: C4CanvasController {
         
         var labelCenter = self.canvas.center
         labelCenter.y += 150
-        pl.center = labelCenter
+        pl!.center = labelCenter
         labelCenter.y += 30
-        bl.center = labelCenter
+        bl!.center = labelCenter
         labelCenter.y += 30
-        gl.center = labelCenter
+        gl!.center = labelCenter
         
     }
 

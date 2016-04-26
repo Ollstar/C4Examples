@@ -8,11 +8,11 @@
 
 import C4
 
-class Images01 : C4CanvasController {
+class Images01 : CanvasController {
     
     override func setup() {
         
-        let img = C4Image("ollie_pic")
+        let img = Image("ollie_pic")!
         img.center = self.canvas.center;
         self.canvas.add(img)
     }

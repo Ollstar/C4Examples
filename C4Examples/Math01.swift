@@ -9,10 +9,10 @@
 import C4
 import UIKit
 
-class Math01: C4CanvasController {
+class Math01: CanvasController {
     
-    var pathShape:C4Polygon!
-    var backgroundPath:C4Polygon!
+    var pathShape:Polygon!
+    var backgroundPath:Polygon!
     var slider = UISlider()
     
     
@@ -21,7 +21,7 @@ class Math01: C4CanvasController {
         createAndAddPathShapes()
     }
     
-    func absoluteValuePointFor(x:Double) -> C4Point {
+    func absoluteValuePointFor(x:Double) -> Point {
         let calX = x / self.canvas.width * M_PI  // calibrated to [0 to TWO_PI]
         var y = sin(calX)                // create Y
         y = abs(y)                         // absolute value
@@ -30,13 +30,13 @@ class Math01: C4CanvasController {
         y *= 50                   //scale height to 100 points
         y *= -1                    //invert for iOS screen coords
         y += self.canvas.height/2  //move to halfway down the screen
-        return C4Point(x,y)
+        return Point(x,y)
     }
     
-    func normalPointFor(x:Double) -> C4Point {
+    func normalPointFor(x:Double) -> Point {
         let calX = x / self.canvas.width * M_PI  // calibrated to the screen
         let y = sin(calX) * 100 * -1       // create Y and invert for iOS screen coords
-        return C4Point(x,y)
+        return Point(x,y)
     }
     
     func createAndAddSlider() {
@@ -49,8 +49,8 @@ class Math01: C4CanvasController {
     func createAndAddPathShapes() {
         let stepWidth = 8
         let steps = Int(self.canvas.width) / stepWidth + 1
-        var p = [C4Point]()
-        var b = [C4Point]()
+        var p = [Point]()
+        var b = [Point]()
         
         for i in 0..<steps {
             
@@ -61,13 +61,13 @@ class Math01: C4CanvasController {
             
         }
         
-        pathShape = C4Polygon(p)
+        pathShape = Polygon(p)
         pathShape.view.userInteractionEnabled = false
         pathShape.fillColor = clear
         pathShape.strokeEnd = Double(slider.value)
 
         
-        backgroundPath = C4Polygon(b)
+        backgroundPath = Polygon(b)
         backgroundPath.view.userInteractionEnabled = false
         backgroundPath.fillColor = clear
         backgroundPath.strokeColor = C4Blue

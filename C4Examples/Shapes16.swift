@@ -9,15 +9,15 @@
 import UIKit
 import C4
 
-class Shapes16: C4CanvasController {
+class Shapes16: CanvasController {
     
-    var circle:C4Circle!
+    var circle:Circle!
     var patternWidth = Double()
     
     override func setup() {
         
         //create the circle and center it
-        circle = C4Circle(center: self.canvas.center, radius: 150)
+        circle = Circle(center: self.canvas.center, radius: 150)
         
         
         //create a dash pattern
@@ -31,12 +31,12 @@ class Shapes16: C4CanvasController {
         
         //thicken the line and set its dash pattern
         circle.lineWidth = 10.0
-        circle.fillColor = C4Color(UIColor.clearColor())
+        circle.fillColor = Color(UIColor.clearColor())
         circle.lineDashPattern = dashPattern
         //add the line to the canvas
         self.canvas.add(circle)
-        //animate it after a short delay
-        let anim = C4ViewAnimation(duration:180.0) {    //duration = 3 minutes (60s * 3 = 180);
+        //animate it after a short wait
+        let anim = ViewAnimation(duration:180.0) {    //duration = 3 minutes (60s * 3 = 180);
             
             self.circle.strokeColor = C4Blue
             //set the final dash phase to the entire width of the pattern
@@ -45,7 +45,7 @@ class Shapes16: C4CanvasController {
         
         anim.autoreverses = true
         
-        delay(0.1){
+        wait(0.1){
             anim.animate()
         }
     }

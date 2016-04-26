@@ -8,26 +8,26 @@
 
 import C4
 
-class Shapes01: C4CanvasController {
+class Shapes01: CanvasController {
     override func setup() {
         
-        var rectangle:C4Rectangle!
-        var square:C4Rectangle!
-        var circle:C4Circle!
-        var ellipse:C4Ellipse!
+        var rectangle:Rectangle!
+        var square:Rectangle!
+        var circle:Circle!
+        var ellipse:Ellipse!
         
         
         //Create a rectangle
-        rectangle = C4Rectangle(frame: C4Rect(0,0,200,100))
+        rectangle = Rectangle(frame: Rect(0,0,200,100))
         
         //Create a square (same w & h)
-        square = C4Rectangle(frame: C4Rect(0,0,100,100))
+        square = Rectangle(frame: Rect(0,0,100,100))
         
         //Create an ellipse
-        ellipse = C4Ellipse(frame: rectangle.frame) // same dimensions as rectangle
+        ellipse = Ellipse(frame: rectangle.frame) // same dimensions as rectangle
         
         //Create a circle (same w & h)
-        circle = C4Circle(center: C4Point(0,0), radius: 50) // same dimensions as square
+        circle = Circle(center: Point(0,0), radius: 50) // same dimensions as square
         
         //Figure out the vertical whitespace (i.e. the space between shapes and the edges of the canvas)
         var whiteSpace = self.canvas.height - 4 * rectangle.height
@@ -35,7 +35,7 @@ class Shapes01: C4CanvasController {
         whiteSpace = whiteSpace/5 // because there are 5 gaps
         
         //center all the shapes to the canvas
-        var center = C4Point()
+        var center = Point()
         center.x = self.canvas.center.x
         
         //set the y position for the rectangle

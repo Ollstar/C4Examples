@@ -9,28 +9,28 @@
 import C4
 import UIKit
 
-class Math16: C4CanvasController {
+class Math16: CanvasController {
     
-    var line:C4Line!
+    var line:Line!
     var slider = UISlider()
-    var pts = [C4Point(), C4Point(150,300)]
+    var pts = [Point(), Point(150,300)]
     
     override func setup() {
         let slider = UISlider(frame: CGRect(x: 0,y: 0,width: 300,height: 44))
         slider.center = canvas.view.center
         canvas.add(slider)
         slider.addTarget(self, action: "sliderValueChanged:", forControlEvents: .ValueChanged)
-        line = C4Line(pts)
+        line = Line(pts)
         
         canvas.add(line)
         
     }
     func sliderValueChanged(sender: UISlider) {
         canvas.remove(line)
-        pts = [C4Point(), C4Point(150,300)]
+        pts = [Point(), Point(150,300)]
 
-        pts[0] = lerp(a: pts[0], b: pts[1], param: Double(sender.value))
-        line = C4Line(pts)
+        pts[0] = lerp(pts[0], pts[1], at: Double(sender.value))
+        line = Line(pts)
         canvas.add(line)
     }
 }

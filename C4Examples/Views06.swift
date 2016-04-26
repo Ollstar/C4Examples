@@ -8,22 +8,22 @@
 
 import C4
 
-class Views06: C4CanvasController {
+class Views06: CanvasController {
     
-    var image1:C4Image!
-    var image2:C4Image!
+    var image1:Image!
+    var image2:Image!
     
     override func setup() {
 
     setupShapes()
     
     //you can change the frame of images and movies in the following way
-    image2.frame = C4Rect(image1.center.x, image1.center.y, 400, 160)
+    image2.frame = Rect(image1.center.x, image1.center.y, 400, 160)
     }
     
     func setupShapes() {
-        image1 = C4Image("ollie_pic")
-        image2 = C4Image("ollie_pic")
+        image1 = Image("ollie_pic")
+        image2 = Image("ollie_pic")
     
         image1.center = self.canvas.center;
     

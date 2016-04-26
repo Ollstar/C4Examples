@@ -8,14 +8,14 @@
 
 import C4
 
-class Advanced02: C4CanvasController {
+class Advanced02: CanvasController {
     
-    var line:C4Line!
+    var line:Line!
     
     override func setup() {
-        let linePoints = [C4Point(), C4Point()]
-        line = C4Line(linePoints)
-        canvas.addPanGestureRecognizer({ (location, translation, velocity, state) -> () in
+        let linePoints = [Point(), Point()]
+        line = Line(linePoints)
+        canvas.addPanGestureRecognizer({ (center, location, translation, velocity, state) -> () in
             
 
             self.line.endPoints = (self.canvas.center,location)

@@ -8,13 +8,13 @@
 
 import C4
 
-class Movies05: C4CanvasController {
+class Movies05: CanvasController {
     
     var playIfTrue = true
     
     override func setup() {
         //create a movie and play it automatically
-        let movie = C4Movie("step.mov")
+        let movie = Movie("step.mov")!
         movie.center = self.canvas.center
         movie.play()
         movie.loops = true

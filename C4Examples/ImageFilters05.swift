@@ -8,11 +8,11 @@
 
 import C4
 
-class ImageFilters05: C4CanvasController {
+class ImageFilters05: CanvasController {
     override func setup() {
         
-        let image = C4Image("rocket")
-        var filter = C4GaussianBlur()
+        let image = Image("rocket")!
+        var filter = GaussianBlur()
         filter.radius = 25
         image.apply(filter)
         image.center = canvas.center

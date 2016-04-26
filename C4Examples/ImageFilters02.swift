@@ -8,12 +8,12 @@
 
 import C4
 
-class ImageFilters02: C4CanvasController {
+class ImageFilters02: CanvasController {
     override func setup() {
         
-        let image = C4Image("burnImage")
-        let filter = C4Bloom()
-//        filter.image = C4Image("rocket")
+        let image = Image("burnImage")!
+        let filter = Bloom()
+//        filter.image = Image("rocket")
         image.apply(filter)
         image.center = canvas.center
         canvas.add(image)

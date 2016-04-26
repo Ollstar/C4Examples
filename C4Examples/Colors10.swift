@@ -8,13 +8,13 @@
 
 import C4
 
-class Colors10: C4CanvasController {
+class Colors10: CanvasController {
     
-    //this example should show c4color from hexValue
+    //this example should show Color from hexValue
     
     override func setup() {
-        let c = C4Color(0xFF0012FF)
-        let s1 = C4Circle(center: self.canvas.center, radius: 50)
+        let c = Color(0xFF0012FF)
+        let s1 = Circle(center: self.canvas.center, radius: 50)
         s1.fillColor = c
         canvas.add(s1)
     }

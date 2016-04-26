@@ -9,12 +9,12 @@
 import C4
 import UIKit
 
-class Colors07: C4CanvasController {
+class Colors07: CanvasController {
     
-    var alpha1:C4Rectangle!
-    var alpha2:C4Rectangle!
-    var alpha3:C4Rectangle!
-    var alpha4:C4Rectangle!
+    var alpha1:Rectangle!
+    var alpha2:Rectangle!
+    var alpha3:Rectangle!
+    var alpha4:Rectangle!
     
     override func setup() {
         
@@ -36,13 +36,13 @@ class Colors07: C4CanvasController {
     }
     
     func setupShapes() {
-        let horizontalFrame = C4Rect(0, 0, 300, 100);
-        let verticalFrame = C4Rect(0, 0, 100, 300);
+        let horizontalFrame = Rect(0, 0, 300, 100);
+        let verticalFrame = Rect(0, 0, 100, 300);
         
-        alpha1 = C4Rectangle(frame: horizontalFrame)
-        alpha2 = C4Rectangle(frame: verticalFrame)
-        alpha3 = C4Rectangle(frame: horizontalFrame)
-        alpha4 = C4Rectangle(frame: verticalFrame)
+        alpha1 = Rectangle(frame: horizontalFrame)
+        alpha2 = Rectangle(frame: verticalFrame)
+        alpha3 = Rectangle(frame: horizontalFrame)
+        alpha4 = Rectangle(frame: verticalFrame)
         
         
         alpha1.lineWidth = 0.0

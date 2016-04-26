@@ -9,21 +9,21 @@
 import C4
 import UIKit
 
-class Interaction10: C4CanvasController {
+class Interaction10: CanvasController {
     
-    var s1:C4Circle!
-    var s2:C4Circle!
-    var s3:C4Circle!
-    var shapes = [C4Circle]()
+    var s1:Circle!
+    var s2:Circle!
+    var s3:Circle!
+    var shapes = [Circle]()
     var k1 = "swipedRight"
     var k2 = "swipedLeft"
     var k3 = "swipedUp"
     var k4 = "swipedDown"
     
     override func setup() {
-        s1 = C4Circle(center: C4Point(self.canvas.center.x, self.canvas.center.y-100), radius:50)
-        s2 = C4Circle(center: self.canvas.center, radius:50)
-        s3 = C4Circle(center: C4Point(self.canvas.center.x, self.canvas.center.y+100), radius:50)
+        s1 = Circle(center: Point(self.canvas.center.x, self.canvas.center.y-100), radius:50)
+        s2 = Circle(center: self.canvas.center, radius:50)
+        s3 = Circle(center: Point(self.canvas.center.x, self.canvas.center.y+100), radius:50)
         
         shapes.append(s1)
         shapes.append(s2)
@@ -36,7 +36,7 @@ class Interaction10: C4CanvasController {
             for g in 0...3 {//add gesture for each direction
                 var str = k1
 
-                let a = shape.addSwipeGestureRecognizer({ (location, state, direction) -> () in
+                let a = shape.addSwipeGestureRecognizer({ (center, location, state, direction) -> () in
                     shape.post(str)
                 })
                 if g == 0 {
@@ -72,7 +72,7 @@ class Interaction10: C4CanvasController {
             }
         }
     }
-    func changeShapeColorOnEvent(shape: C4Shape, event:String) {
+    func changeShapeColorOnEvent(shape: Shape, event:String) {
         if event == k1{
             shape.fillColor = red
         } else if event == k2 {

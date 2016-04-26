@@ -8,11 +8,11 @@
 
 import C4
 
-class ImageFilters06: C4CanvasController {
+class ImageFilters06: CanvasController {
     override func setup() {
         
-        let image = C4Image("rocket")
-        var filter = C4Hue()
+        let image = Image("rocket")!
+        var filter = Hue()
         filter.angle = 5
         image.apply(filter)
         image.center = canvas.center

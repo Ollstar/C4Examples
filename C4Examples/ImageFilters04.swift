@@ -8,11 +8,11 @@
 
 import C4
 
-class ImageFilters04: C4CanvasController {
+class ImageFilters04: CanvasController {
     override func setup() {
         
-        let image = C4Image("burnImage")
-        var filter = C4DotScreen()
+        let image = Image("burnImage")!
+        var filter = DotScreen()
         filter.center = canvas.center
         filter.width = 5
         filter.sharpness = 100

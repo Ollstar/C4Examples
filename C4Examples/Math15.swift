@@ -9,9 +9,9 @@
 import C4
 import UIKit
 
-class Math15: C4CanvasController {
+class Math15: CanvasController {
     
-    var pathShape:C4Polygon!
+    var pathShape:Polygon!
     var slider = UISlider()
     
     
@@ -20,7 +20,7 @@ class Math15: C4CanvasController {
         createAndAddSlider()
     }
     
-    func tanPointsFor(x:Double) -> C4Point {
+    func tanPointsFor(x:Double) -> Point {
         let calX = (x/self.canvas.width) * M_PI   // calibrated to [0 to TWO_PI]
         var y = tan(calX)                    // create Y
         
@@ -30,7 +30,7 @@ class Math15: C4CanvasController {
         y = clamp(y, min: 0, max: self.canvas.height)
 
         
-        return C4Point(x,y)
+        return Point(x,y)
     }
     
     func createAndAddSlider() {
@@ -44,7 +44,7 @@ class Math15: C4CanvasController {
     func createAndAddPathShapes() {
         let stepWidth = 1
         let steps = Int(self.canvas.width) / stepWidth + 1
-        var p = [C4Point]()
+        var p = [Point]()
         
         for i in 0..<steps {
             
@@ -54,7 +54,7 @@ class Math15: C4CanvasController {
             
         }
         
-        pathShape = C4Polygon(p)
+        pathShape = Polygon(p)
         pathShape.view.userInteractionEnabled = false
         pathShape.fillColor = clear
         pathShape.strokeEnd = Double(slider.value)

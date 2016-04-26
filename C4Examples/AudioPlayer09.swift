@@ -8,17 +8,17 @@
 
 import C4
 
-class AudioPlayer09: C4CanvasController {
-    var s:C4AudioPlayer!
+class AudioPlayer09: CanvasController {
+    var s:AudioPlayer!
     var meterUpdateTimer:NSTimer!
-    var peakLeft:C4Line!
-    var peakRight:C4Line!
-    var avgLeft:C4Line!
-    var avgRight:C4Line!
+    var peakLeft:Line!
+    var peakRight:Line!
+    var avgLeft:Line!
+    var avgRight:Line!
     
     
     override func setup() {
-        s = C4AudioPlayer("soundTest.mp3")
+        s = AudioPlayer("soundTest.mp3")
         s.play()
         s.loops = true
         s.meteringEnabled = true
@@ -38,21 +38,21 @@ class AudioPlayer09: C4CanvasController {
 //        }
         
         var pts = [
-            C4Point(self.canvas.width / 2, self.canvas.center.y + 100),
-            C4Point(self.canvas.width / 2, self.canvas.center.y - 100)
+            Point(self.canvas.width / 2, self.canvas.center.y + 100),
+            Point(self.canvas.width / 2, self.canvas.center.y - 100)
         ]
         pts[0].x -= 100
         pts[1].x -= 100
-        avgLeft = C4Line(pts)
+        avgLeft = Line(pts)
         pts[0].x += 75
         pts[1].x += 75
-        avgRight = C4Line(pts)
+        avgRight = Line(pts)
         pts[0].x += 75
         pts[1].x += 75
-        peakLeft = C4Line(pts)
+        peakLeft = Line(pts)
         pts[0].x += 75
         pts[1].x += 75
-        peakRight = C4Line(pts)
+        peakRight = Line(pts)
         avgLeft.strokeColor = C4Pink
         avgRight.strokeColor = C4Pink
         canvas.add(avgLeft)

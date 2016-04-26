@@ -8,12 +8,12 @@
 
 import C4
 
-class Views13: C4CanvasController {
+class Views13: CanvasController {
     
-    var s1 :C4Rectangle!
-    var s2 :C4Rectangle!
-    var s3 :C4Rectangle!
-    var s4 :C4Rectangle!
+    var s1 :Rectangle!
+    var s2 :Rectangle!
+    var s3 :Rectangle!
+    var s4 :Rectangle!
     
     override func setup() {
   
@@ -23,7 +23,7 @@ class Views13: C4CanvasController {
     func s1remove() {
     //Here's the bit that removes the shape from the canvas
     s1.removeFromSuperview()
-        delay(1.0) {
+        wait(1.0) {
             self.s1add()
         }
     }
@@ -34,7 +34,7 @@ class Views13: C4CanvasController {
     
     func s2remove() {
     s2.removeFromSuperview()
-        delay(1.0) {
+        wait(1.0) {
             self.s2add()
         }
     }
@@ -45,7 +45,7 @@ class Views13: C4CanvasController {
     
     func s3remove() {
     s3.removeFromSuperview()
-        delay(1.0) {
+        wait(1.0) {
             self.s3add()
         }
     }
@@ -55,7 +55,7 @@ class Views13: C4CanvasController {
     }
     func s4remove() {
     s4.removeFromSuperview()
-        delay(1.0) {
+        wait(1.0) {
             self.s4add()
         }    }
     
@@ -64,12 +64,12 @@ class Views13: C4CanvasController {
     }
     
     func setupShapes() {
-    let rect = C4Rect(0, 0, 100, 100)
+    let rect = Rect(0, 0, 100, 100)
         
-        s1 = C4Rectangle(frame: rect)
-        s2 = C4Rectangle(frame: rect)
-        s3 = C4Rectangle(frame: rect)
-        s4 = C4Rectangle(frame: rect)
+        s1 = Rectangle(frame: rect)
+        s2 = Rectangle(frame: rect)
+        s3 = Rectangle(frame: rect)
+        s4 = Rectangle(frame: rect)
         
         
     var centerPoint = self.canvas.center
@@ -92,16 +92,16 @@ class Views13: C4CanvasController {
             self.canvas.add(s2)
             self.canvas.add(s3)
             self.canvas.add(s4)
-        s1.addTapGestureRecognizer { (location, state) -> () in
+        s1.addTapGestureRecognizer { (center, location, state) -> () in
             self.s1remove()
         }
-        s2.addTapGestureRecognizer { (location, state) -> () in
+        s2.addTapGestureRecognizer { (center,location, state) -> () in
             self.s2remove()
         }
-        s3.addTapGestureRecognizer { (location, state) -> () in
+        s3.addTapGestureRecognizer { (center,location, state) -> () in
             self.s3remove()
         }
-        s4.addTapGestureRecognizer { (location, state) -> () in
+        s4.addTapGestureRecognizer { (center,location, state) -> () in
             self.s4remove()
         }
     }

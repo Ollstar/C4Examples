@@ -8,19 +8,19 @@
 
 import C4
 
-class Views18: C4CanvasController {
+class Views18: CanvasController {
     
-    var m:C4Image!
-    var img:C4Image!
+    var m:Image!
+    var img:Image!
     
     override func setup() {
         
-        img = C4Image("ollie_pic")
-        m = C4Image("ollie_pic")
+        img = Image("ollie_pic")
+        m = Image("ollie_pic")
         
         m.width = img.width
         img.center = self.canvas.center
-        m.center = C4Point(m.width/2 ,m.height/2)
+        m.center = Point(m.width/2 ,m.height/2)
 
 
         
@@ -28,14 +28,14 @@ class Views18: C4CanvasController {
         
         self.canvas.add(img)
         
-        let a = C4ViewAnimation(duration: 1.5) {
+        let a = ViewAnimation(duration: 1.5) {
             self.m.transform.rotate(M_PI)
             //m.rotation += TWO_PI;
 
         }
         a.repeats = true
         a.curve = .Linear
-        delay(0.1) {
+        wait(0.1) {
             a.animate()
         }
 

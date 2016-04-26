@@ -8,31 +8,31 @@
 
 import C4
 
-class Interaction02: C4CanvasController {
+class Interaction02: CanvasController {
     
-    var s1:C4Circle!
-    var s2:C4Circle!
-    var s3:C4Circle!
+    var s1:Circle!
+    var s2:Circle!
+    var s3:Circle!
     
     override func setup() {
-        s1 = C4Circle(center: self.canvas.center, radius: 50)
-        s2 = C4Circle(center: self.canvas.center, radius: 50)
-        s3 = C4Circle(center: self.canvas.center, radius: 50)
+        s1 = Circle(center: self.canvas.center, radius: 50)
+        s2 = Circle(center: self.canvas.center, radius: 50)
+        s3 = Circle(center: self.canvas.center, radius: 50)
         
-        s1.addLongPressGestureRecognizer { (location, state) -> () in
+        s1.addLongPressGestureRecognizer { (center, location, state) -> () in
             if state == .Began {
                 self.randomColor(self.s1)
             }
         }
         
         
-        s2.addLongPressGestureRecognizer { (location, state) -> () in
+        s2.addLongPressGestureRecognizer { (center, location, state) -> () in
             if state == .Began {
                 self.randomColor(self.s2)
             }
         }
         
-        s3.addLongPressGestureRecognizer { (location, state) -> () in
+        s3.addLongPressGestureRecognizer { (center, location, state) -> () in
             if state == .Began {
                 self.randomColor(self.s3)
             }
@@ -49,8 +49,8 @@ class Interaction02: C4CanvasController {
     }
     
     
-    func randomColor(shape: C4Shape) {
-        shape.fillColor = C4Color(red: random01(), green: random01(), blue: random01(), alpha: random01())
+    func randomColor(shape: Shape) {
+        shape.fillColor = Color(red: random01(), green: random01(), blue: random01(), alpha: random01())
     }
 }
 

@@ -8,17 +8,17 @@
 
 import C4
 
-class Views17: C4CanvasController {
+class Views17: CanvasController {
     
-    var img:C4Image!
-    var s:C4Ellipse!
+    var img:Image!
+    var s:Ellipse!
     
     override func setup() {
-        img = C4Image("ollie_pic")
-        s = C4Ellipse(frame: C4Rect(0, 0, img.height, img.height))
+        img = Image("ollie_pic")
+        s = Ellipse(frame: Rect(0, 0, img.height, img.height))
         
         img.center = self.canvas.center
-        s.center = C4Point(img.width/2 ,img.height/2)
+        s.center = Point(img.width/2 ,img.height/2)
         img.layer?.mask = s.layer
         self.canvas.add(img)
     }

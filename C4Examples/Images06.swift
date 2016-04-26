@@ -8,14 +8,14 @@
 
 import C4
 
-class Images06: C4CanvasController {
+class Images06: CanvasController {
     
     override func setup() {
-        let img1 = C4Image("ollie_pic")
-        img1.center = C4Point(self.canvas.center.x, self.canvas.height / 3)
+        let img1 = Image("ollie_pic")!
+        img1.center = Point(self.canvas.center.x, self.canvas.height / 3)
         
-        let img2 = C4Image(image: img1)
-        img2.center = C4Point(self.canvas.center.x, self.canvas.height * 2 / 3)
+        let img2 = Image(c4image: img1)
+        img2.center = Point(self.canvas.center.x, self.canvas.height * 2 / 3)
         
         self.canvas.add(img1)
         self.canvas.add(img2)

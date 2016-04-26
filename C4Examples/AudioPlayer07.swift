@@ -8,25 +8,25 @@
 
 import C4
 
-class AudioPlayer07: C4CanvasController {
+class AudioPlayer07: CanvasController {
     
-    var audioPlayer:C4AudioPlayer!
-    var circle:C4Circle!
+    var audioPlayer:AudioPlayer!
+    var circle:Circle!
     var velocityMax:Double = 10000
     
     override func setup() {
         
-        audioPlayer = C4AudioPlayer("soundTest.mp3")
+        audioPlayer = AudioPlayer("soundTest.mp3")
         audioPlayer.loops = true
         
-        self.canvas.addPanGestureRecognizer { (location, translation, velocity, state) -> () in
+        self.canvas.addPanGestureRecognizer { (center, location, translation, velocity, state) -> () in
             //slide finger quickly over screen to change pan from left to right.
             self.audioPlayer.pan = abs(velocity.x) / self.velocityMax
             print("\(abs(velocity.x))")
             
         }
         
-        self.canvas.addTapGestureRecognizer { (location, state) -> () in
+        self.canvas.addTapGestureRecognizer { (center, location, state) -> () in
             
             //playing returns true if the receiver's current playback rate > 0. Otherwise returns false.
             if self.audioPlayer.playing == false{

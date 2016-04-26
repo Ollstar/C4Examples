@@ -8,10 +8,10 @@
 
 import C4
 
-class Views11: C4CanvasController {
+class Views11: CanvasController {
     
-    var s1:C4Rectangle!
-    var s2:C4Rectangle!
+    var s1:Rectangle!
+    var s2:Rectangle!
     
     override func setup() {
         
@@ -20,12 +20,12 @@ class Views11: C4CanvasController {
     }
     
     func setupShapes() {
-        let rect = C4Rect(0, 0, 150, 300)
+        let rect = Rect(0, 0, 150, 300)
         
-        s1 = C4Rectangle(frame: rect)
+        s1 = Rectangle(frame: rect)
         s1.center = self.canvas.center
         
-        s2 = C4Rectangle(frame: rect)
+        s2 = Rectangle(frame: rect)
         s2.opacity = 0.75 //Lets change the alpha so we can see which one is which
         self.canvas.add(s1)
         self.canvas.add(s2)

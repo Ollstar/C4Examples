@@ -8,16 +8,16 @@
 
 import C4
 
-class Views07: C4CanvasController {
+class Views07: CanvasController {
     
-    var normalImage:C4Image!
-    var changedImage:C4Image!
+    var normalImage:Image!
+    var changedImage:Image!
 
     override func setup() {
  
-            normalImage = C4Image("ollie_pic")
+            normalImage = Image("ollie_pic")
             normalImage.center = self.canvas.center
-            changedImage = C4Image(image: normalImage)
+            changedImage = Image(c4image: normalImage)
         
             changedImage.constrainsProportions = false
             changedImage.height /= 2.0

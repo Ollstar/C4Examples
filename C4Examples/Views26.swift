@@ -25,10 +25,10 @@
 import C4
 import UIKit
 
-class Views26: C4CanvasController {
+class Views26: CanvasController {
     
-    var s1:C4Circle!
-    var s2:C4Rectangle!
+    var s1:Circle!
+    var s2:Rectangle!
     
     
     
@@ -41,11 +41,11 @@ class Views26: C4CanvasController {
     }
     
     func setupShapes() {
-        s1 = C4Circle(center: self.canvas.center, radius: 44)
-        s2 = C4Rectangle(frame: s1.frame)
+        s1 = Circle(center: self.canvas.center, radius: 44)
+        s2 = Rectangle(frame: s1.frame)
         
         s1.shadow.opacity = 0.8
-        s1.shadow.offset = C4Size(50,50)
+        s1.shadow.offset = Size(50,50)
         self.canvas.add(s1)
     }
 }

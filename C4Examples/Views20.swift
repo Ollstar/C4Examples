@@ -8,11 +8,11 @@
 
 import C4
 
-class Views20: C4CanvasController {
+class Views20: CanvasController {
     
-    var img:C4Image!
-    var s1:C4Rectangle!
-    var s2:C4Rectangle!
+    var img:Image!
+    var s1:Rectangle!
+    var s2:Rectangle!
     
     override func setup() {
         setupShapes()
@@ -23,25 +23,25 @@ class Views20: C4CanvasController {
     }
     
     func setupShapes() {
-        img = C4Image("ollie_pic")
-        s1 = C4Rectangle(frame: C4Rect(0,0,600,50))
-        s2 = C4Rectangle(frame: C4Rect(0, 0, 50, 600))
+        img = Image("ollie_pic")
+        s1 = Rectangle(frame: Rect(0,0,600,50))
+        s2 = Rectangle(frame: Rect(0, 0, 50, 600))
         
         img.center = self.canvas.center
-        s1.center = C4Point(img.width/2 ,img.height/2)
-        s2.center = C4Point(s1.width/2 ,s1.height/2)
+        s1.center = Point(img.width/2 ,img.height/2)
+        s2.center = Point(s1.width/2 ,s1.height/2)
         
-        let a1 = C4ViewAnimation(duration: 1.7) {
+        let a1 = ViewAnimation(duration: 1.7) {
             self.s1.transform.rotate(-M_PI)
         }
-        let a2 = C4ViewAnimation(duration: 2.3) {
+        let a2 = ViewAnimation(duration: 2.3) {
             self.s2.transform.rotate(M_PI_2)
         }
         a1.repeats = true
         a2.repeats = true
         a2.autoreverses = true
 //        a1.curve = .Linear
-        delay(0.1) {
+        wait(0.1) {
             a1.animate()
             a2.animate()
         }

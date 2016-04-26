@@ -7,10 +7,10 @@
 //
 
 import C4
-class Shapes07: C4CanvasController {
+class Shapes07: CanvasController {
     
-    var poly1:C4Polygon!
-    var poly2:C4Polygon!
+    var poly1:Polygon!
+    var poly2:Polygon!
     
     override func setup() {
         
@@ -28,16 +28,16 @@ class Shapes07: C4CanvasController {
     
     func createAndStylePolygons() {
         
-        let polyPoints = [C4Point(), C4Point(150, -150), C4Point(200, -100), C4Point(100, 0), C4Point(0, -100), C4Point(50,-150), C4Point(200,0)]
+        let polyPoints = [Point(), Point(150, -150), Point(200, -100), Point(100, 0), Point(0, -100), Point(50,-150), Point(200,0)]
         
         
         //create poly1 and style it
-        poly1 =  C4Polygon(polyPoints)
-        poly1.center = C4Point(self.canvas.center.x, self.canvas.height/3);
+        poly1 =  Polygon(polyPoints)
+        poly1.center = Point(self.canvas.center.x, self.canvas.height/3);
         
         //create poly2 and style it
-        poly2 = C4Polygon(polyPoints)
-        poly2.center = C4Point(self.canvas.center.x, self.canvas.height*2/3);
+        poly2 = Polygon(polyPoints)
+        poly2.center = Point(self.canvas.center.x, self.canvas.height*2/3);
         
         
         
@@ -49,11 +49,11 @@ class Shapes07: C4CanvasController {
     
     func createLabels() {
         
-        let f = C4Font(name: "ArialRoundedMTBold", size: 30)
+        let f = Font(name: "ArialRoundedMTBold", size: 30)!
         
         
         //create the FILLNORMAL label, center it to the base of poly1
-        let lableNormal =  C4TextShape(text: "FILLNORMAL", font: f)
+        let lableNormal =  TextShape(text: "FILLNORMAL", font: f)!
         
         var center = poly1.center
         center.y += poly1.height/2 + lableNormal.height
@@ -61,7 +61,7 @@ class Shapes07: C4CanvasController {
         self.canvas.add(lableNormal)
         
         //create the FILLEVENODD label, center it to the base of poly2
-        let labelEvenOdd =  C4TextShape(text: "FILLEVENODD", font: f)
+        let labelEvenOdd =  TextShape(text: "FILLEVENODD", font: f)!
         center = poly2.center
         center.y += poly2.height/2 + labelEvenOdd.height
         labelEvenOdd.center = center

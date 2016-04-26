@@ -9,24 +9,24 @@
 import C4
 import UIKit
 
-class Advanced03: C4CanvasController {
+class Advanced03: CanvasController {
     
-    var shapes = [C4Shape]()
+    var shapes = [Shape]()
     
     override func setup() {
         
         for i in 0..<100 {
-            let s = C4Rectangle(frame: C4Rect(0,0,self.canvas.height,20))
-            s.fillColor = C4Color(UIColor(white: 0.0, alpha:CGFloat(Double(i)/40.0)))
-            s.strokeColor = C4Color(UIColor.clearColor())
-            s.anchorPoint = C4Point(0.5,8.0+Double(i))
+            let s = Rectangle(frame: Rect(0,0,self.canvas.height,20))
+            s.fillColor = Color(UIColor(white: 0.0, alpha:CGFloat(Double(i)/40.0)))
+            s.strokeColor = Color(UIColor.clearColor())
+            s.anchorPoint = Point(0.5,8.0+Double(i))
             var p = self.canvas.center
             p.y += self.canvas.height/2
             s.center = p
             shapes.append(s)
             canvas.add(s)
         }
-        delay(0.1) {
+        wait(0.1) {
             self.setupAnimations()
         }
     }
@@ -35,7 +35,7 @@ class Advanced03: C4CanvasController {
         for i in 0..<shapes.count {
             
             let s = shapes[i]
-            let a = C4ViewAnimation(duration: Double(i)*0.01 + 1) {
+            let a = ViewAnimation(duration: Double(i)*0.01 + 1) {
                 s.transform.rotate(M_PI_2)
             }
             a.repeats = true

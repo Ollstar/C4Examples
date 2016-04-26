@@ -6,12 +6,16 @@
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "3187735F36753A059319B9B3549C65315BEF8A2E" : 0,
     "54F4D03C461288D08B6868DC66C04481BECA35A3" : 0,
+    "FDF2614AEDDD90052B9F400E69BFD5CF2ED8DE35" : 0,
+    "277F2EB06F60A90F34580585F62059554D47C7FB" : 0,
     "05DD4CB8EF1C9683D314CF1F9A9C9B3C261B7DC3" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E2B32592-B175-4D7B-B619-1B23BC0E1D16",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "3187735F36753A059319B9B3549C65315BEF8A2E" : "",
     "54F4D03C461288D08B6868DC66C04481BECA35A3" : "..\/..\/Development\/Slant\/C4Framework\/C4iOS",
+    "FDF2614AEDDD90052B9F400E69BFD5CF2ED8DE35" : "C4Examples\/development\/Animoji\/",
+    "277F2EB06F60A90F34580585F62059554D47C7FB" : "C4Examples\/development\/EmojioStudio\/",
     "05DD4CB8EF1C9683D314CF1F9A9C9B3C261B7DC3" : "C4Examples\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "C4Examples",
@@ -24,6 +28,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "05DD4CB8EF1C9683D314CF1F9A9C9B3C261B7DC3"
     },
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/Ollstar\/animoji.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "277F2EB06F60A90F34580585F62059554D47C7FB"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/C4Github\/C4App.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3187735F36753A059319B9B3549C65315BEF8A2E"
@@ -32,6 +41,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/C4Framework\/C4iOS.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "54F4D03C461288D08B6868DC66C04481BECA35A3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/Ollstar\/animojiapp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FDF2614AEDDD90052B9F400E69BFD5CF2ED8DE35"
     }
   ]
 }

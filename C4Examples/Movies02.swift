@@ -8,21 +8,21 @@
 
 import C4
 
-class Movies02: C4CanvasController {
+class Movies02: CanvasController {
     
     var playIfTrue = true
     
     override func setup() {
         //create a movie and play it automatically
-        let movie = C4Movie("step.mov")
+        let movie = Movie("step.mov")!
         movie.center = self.canvas.center
         movie.play()
-        let a = C4ViewAnimation(duration: 5) {
+        let a = ViewAnimation(duration: 5) {
             movie.width = 200
         }
         a.repeats = false
         a.autoreverses = true
-        canvas.addTapGestureRecognizer { (location, state) -> () in
+        canvas.addTapGestureRecognizer { (center, location, state) -> () in
         a.animate()
         }
         

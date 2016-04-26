@@ -8,15 +8,15 @@
 
 import C4
 
-class AudioPlayer01: C4CanvasController {
+class AudioPlayer01: CanvasController {
     
-    var audioPlayer:C4AudioPlayer!
+    var audioPlayer:AudioPlayer!
     
     override func setup() {
         
-        audioPlayer = C4AudioPlayer("sound.wav")
+        audioPlayer = AudioPlayer("sound.wav")
         
-        self.canvas.addTapGestureRecognizer { (location, state) -> () in
+        self.canvas.addTapGestureRecognizer { (center, location, state) -> () in
             self.audioPlayer.play()
 //            print("in tap")
         }

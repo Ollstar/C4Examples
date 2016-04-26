@@ -8,24 +8,24 @@
 
 import C4
 
-class Movies06: C4CanvasController {
+class Movies06: CanvasController {
     
     
-    var movie:C4Movie!
+    var movie:Movie!
     
     override func setup() {
         //create a movie and play it automatically
-        let movie = C4Movie("test.mov")
+        let movie = Movie("test.mov")!
 //        movie.reachedEnd {
-//            let s = C4Ellipse(frame: movie.frame)
+//            let s = Ellipse(frame: movie.frame)
 //            movie.layer?.mask = s.layer
-//            let a = C4ViewAnimation(duration: 2) {
+//            let a = ViewAnimation(duration: 2) {
 //                s.transform.rotate(M_PI)
 //            }
 //            a.repeats = true
 //            a.animate()
 //        }
-        movie.frame = C4Rect(0, 0, self.canvas.frame.max.x,self.canvas.frame.max.y)
+        movie.frame = Rect(0, 0, self.canvas.frame.max.x,self.canvas.frame.max.y)
         movie.loops = false
         movie.play()
         self.canvas.add(movie)

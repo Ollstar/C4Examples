@@ -9,10 +9,10 @@
 import C4
 import UIKit
 
-class NewMath12: C4CanvasController {
-    var mainPoints = [C4Point]()
-    var modifiedPoints = [C4Point]()
-    var insetFrame = C4Rect()
+class NewMath12: CanvasController {
+    var mainPoints = [Point]()
+    var modifiedPoints = [Point]()
+    var insetFrame = Rect()
     override func setup() {
         let margin = canvas.frame.size.height * 0.1
         insetFrame = inset(canvas.frame, dx: margin, dy: margin)
@@ -27,8 +27,8 @@ class NewMath12: C4CanvasController {
             var y = sin(x * 2 * M_PI)
             let mappedY = min(y, 0.5) * -1
             y *= -1.0
-            modifiedPoints.append(C4Point(x,mappedY))
-            mainPoints.append(C4Point(x,y))
+            modifiedPoints.append(Point(x,mappedY))
+            mainPoints.append(Point(x,y))
             x += 0.001
         } while x < 1
     }

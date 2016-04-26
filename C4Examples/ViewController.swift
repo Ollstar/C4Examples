@@ -9,7 +9,7 @@
 import UIKit
 import C4
 
-class ViewController: C4CanvasController {
+class ViewController: CanvasController {
 
     override func setup() {
         let example = Advanced05()

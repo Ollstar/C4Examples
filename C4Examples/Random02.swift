@@ -8,24 +8,24 @@
 
 import C4
 
-class Random02: C4CanvasController {
+class Random02: CanvasController {
     
-    var s1:C4Rectangle!
+    var s1:Rectangle!
     
     override func setup() {
-        let frame = C4Rect(0,0,100,150)
-        s1 = C4Rectangle(frame: frame)
+        let frame = Rect(0,0,100,150)
+        s1 = Rectangle(frame: frame)
         s1.center = self.canvas.center
         canvas.add(s1)
-        s1.addTapGestureRecognizer { (location, state) -> () in
+        s1.addTapGestureRecognizer { (center, location, state) -> () in
             self.s1.hidden = true
             let randomInt = random(min: 1, max: 10)
             for i in 1...randomInt {
-                let pts = [self.s1.center,C4Point(self.s1.center.x+35+Double(i), self.s1.center.y),C4Point(self.s1.center.x+17, self.s1.center.y+35+Double(i))]
-                let shape = C4Triangle(pts)
-                let a = C4ViewAnimation(duration:1.0) {
-                    let v = C4Vector(x: random(min: 1, max: 200), y: random(min: 1, max: 200))
-                    let t = C4Transform.makeTranslation(v)
+                let pts = [self.s1.center,Point(self.s1.center.x+35+Double(i), self.s1.center.y),Point(self.s1.center.x+17, self.s1.center.y+35+Double(i))]
+                let shape = Triangle(pts)
+                let a = ViewAnimation(duration:1.0) {
+                    let v = Vector(x: random(min: 1, max: 200), y: random(min: 1, max: 200))
+                    let t = Transform.makeTranslation(v)
 
                     shape.transform = t
                 }

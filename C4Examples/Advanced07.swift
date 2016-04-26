@@ -9,23 +9,23 @@
 import C4
 import UIKit
 
-class Advanced07: C4CanvasController {
+class Advanced07: CanvasController {
     
-    var bigCircle:C4Circle!
+    var bigCircle:Circle!
     
     override func setup() {
         makeBigCircle()
     }
     
     func makeBigCircle() {
-        bigCircle = C4Circle(center: self.canvas.center, radius: 150)
-        bigCircle.strokeColor = C4Color(UIColor.clearColor())
+        bigCircle = Circle(center: self.canvas.center, radius: 150)
+        bigCircle.strokeColor = Color(UIColor.clearColor())
         self.canvas.add(bigCircle)
         
         for _ in 0..<100 {
             self.makeCircle()
         }
-        let a = C4ViewAnimation(duration:10) {
+        let a = ViewAnimation(duration:10) {
             self.bigCircle.transform.rotate(M_PI)
             self.bigCircle.fillColor = C4Pink
         }
@@ -36,20 +36,20 @@ class Advanced07: C4CanvasController {
         
     }
     func makeCircle() {
-        let circle = C4Circle(center: C4Point(bigCircle.width/2, bigCircle.height/2), radius: 2)
+        let circle = Circle(center: Point(bigCircle.width/2, bigCircle.height/2), radius: 2)
         self.bigCircle.add(circle)
         newPlace(circle)
     }
     
-    func newPlace(sender:C4Shape) {
+    func newPlace(sender:Shape) {
         let time = random01()*10
-        let a = C4ViewAnimation(duration:time) {
+        let a = ViewAnimation(duration:time) {
             let r = Double(random(min: 1, max: 100))
             let theta = degToRad(random01()*360)
-            sender.center = C4Point((r*cos(theta)) + (self.bigCircle.width/2), (r*sin(theta)) + (self.bigCircle.height/2))
+            sender.center = Point((r*cos(theta)) + (self.bigCircle.width/2), (r*sin(theta)) + (self.bigCircle.height/2))
         }
         a.animate()
-        delay(time) {
+        wait(time) {
             self.newPlace(sender)
         }
         

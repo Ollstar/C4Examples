@@ -9,15 +9,15 @@
 import C4
 import UIKit
 
-class Interaction07: C4CanvasController {
+class Interaction07: CanvasController {
     
-    var s1:C4Circle!
+    var s1:Circle!
     var a:UIPanGestureRecognizer!
     
     override func setup() {
-        s1 = C4Circle(center: self.canvas.center, radius: 50)
+        s1 = Circle(center: self.canvas.center, radius: 50)
         canvas.add(s1)
-        a = s1.addPanGestureRecognizer({ (location, translation, velocity, state) -> () in
+        a = s1.addPanGestureRecognizer({ (center, location, translation, velocity, state) -> () in
             var center = self.s1.center
             center.y += translation.y
             center.x += translation.x

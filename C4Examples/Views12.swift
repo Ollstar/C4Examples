@@ -8,18 +8,18 @@
 
 import C4
 
-class Views12: C4CanvasController {
+class Views12: CanvasController {
     
-    var s1:C4Rectangle!
-    var s2:C4Rectangle!
-    var s3:C4Rectangle!
+    var s1:Rectangle!
+    var s2:Rectangle!
+    var s3:Rectangle!
     
     override func setup() {
         
-        let shapeFrame = C4Rect(0, 0, 100, 100)
-        s1 = C4Rectangle(frame: shapeFrame)
-        s2 = C4Rectangle(frame: shapeFrame)
-        s3 = C4Rectangle(frame: shapeFrame)
+        let shapeFrame = Rect(0, 0, 100, 100)
+        s1 = Rectangle(frame: shapeFrame)
+        s2 = Rectangle(frame: shapeFrame)
+        s3 = Rectangle(frame: shapeFrame)
         
         
         var centerPoint = self.canvas.center

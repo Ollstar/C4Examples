@@ -8,15 +8,15 @@
 
 import C4
 
-class ImageFilters07: C4CanvasController {
+class ImageFilters07: CanvasController {
     override func setup() {
         
-        let image = C4Image()
-        image.frame = C4Rect(canvas.center.x, canvas.center.y, 100, 100)
+        let image = Image()
+        image.frame = Rect(canvas.center.x, canvas.center.y, 100, 100)
         
-        var filter = C4LinearGradient()
-        filter.colors = [C4Color(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5), C4Color(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.1)]
-        filter.points = [C4Point(),C4Point(10,50)]
+        var filter = LinearGradient()
+        filter.colors = [Color(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5), Color(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.1)]
+        filter.points = [Point(),Point(10,50)]
         
         image.generate(filter)
         

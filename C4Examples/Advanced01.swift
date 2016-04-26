@@ -9,14 +9,14 @@
 import C4
 import UIKit
 
-class Advanced01: C4CanvasController {
+class Advanced01: CanvasController {
     
-    var arc1:C4Arc!
-    var pts = [C4Point]()
+    var arc1:Arc!
+    var pts = [Point]()
     var canvasShapeCount = 0
     
     override func setup() {
-        delay(1.0) {
+        wait(1.0) {
             self.arcDraw()
         }
     }
@@ -25,11 +25,11 @@ class Advanced01: C4CanvasController {
         
         if(canvasShapeCount == 0) {
             pts.append(self.canvas.center)
-            pts.append(C4Point(random01()*self.canvas.width, self.canvas.center.y))
+            pts.append(Point(random01()*self.canvas.width, self.canvas.center.y))
         } else {
             pts[0] = pts[1]
             
-            pts[1] = C4Point(random01()*self.canvas.width, self.canvas.center.y);
+            pts[1] = Point(random01()*self.canvas.width, self.canvas.center.y);
         }
         
         let up = (canvasShapeCount % 2 == 0) ? true : false
@@ -38,17 +38,17 @@ class Advanced01: C4CanvasController {
         self.canvas.add(arc)
         canvasShapeCount++
         print(canvasShapeCount)
-        delay(0.0) {
+        wait(0.0) {
             self.animateArc(arc)
         }
-        delay(1.0) {
+        wait(1.0) {
             self.arcDraw()
         }
     }
     
     
     
-    func arcBetweenPoints(beginEndPoints:[C4Point] ,up:Bool) -> C4Arc {
+    func arcBetweenPoints(beginEndPoints:[Point] ,up:Bool) -> Arc {
         let p1 = beginEndPoints[0]
         let p2 = beginEndPoints[1]
         let radius = abs(p2.x - p1.x)/2
@@ -68,9 +68,9 @@ class Advanced01: C4CanvasController {
         }
         let endAngle = startAngle + M_PI
         
-        let s = C4Arc(center: center, radius: radius, start: startAngle, end: endAngle, clockwise: true)
+        let s = Arc(center: center, radius: radius, start: startAngle, end: endAngle, clockwise: true)
         
-        s.fillColor = C4Color(UIColor.clearColor())
+        s.fillColor = Color(UIColor.clearColor())
         
         if(p2.x > p1.x) {
             if(up) {
@@ -93,8 +93,8 @@ class Advanced01: C4CanvasController {
         return s
     }
     
-    func animateArc(arc:C4Arc) {
-        let a = C4ViewAnimation(duration:1.0) {
+    func animateArc(arc:Arc) {
+        let a = ViewAnimation(duration:1.0) {
             
             
             if(arc.strokeStart == 1.0) {

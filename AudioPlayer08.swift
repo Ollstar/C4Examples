@@ -8,20 +8,20 @@
 
 import C4
 
-class AudioPlayer08: C4CanvasController {
+class AudioPlayer08: CanvasController {
     
-    var audioPlayer:C4AudioPlayer!
-    var label:C4TextShape!
+    var audioPlayer:AudioPlayer!
+    var label:TextShape!
     var velocityMax:Double = 10000
     
     override func setup() {
         
-        audioPlayer = C4AudioPlayer("soundTest.mp3")
+        audioPlayer = AudioPlayer("soundTest.mp3")
         audioPlayer.loops = true
         self.setupLabels()
         
 //        self.setupLabels()
-        self.canvas.addPanGestureRecognizer { (location, translation, velocity, state) -> () in
+        self.canvas.addPanGestureRecognizer { (center, location, translation, velocity, state) -> () in
             //slide finger quickly over screen to change pan from left to right.
             self.audioPlayer.pan = abs(velocity.x) / self.velocityMax
             print("\(abs(velocity.x))")
@@ -29,7 +29,7 @@ class AudioPlayer08: C4CanvasController {
             
         }
         
-        self.canvas.addTapGestureRecognizer { (location, state) -> () in
+        self.canvas.addTapGestureRecognizer { (center, location, state) -> () in
             
             //playing returns true if the receiver's current playback rate > 0. Otherwise returns false.
             if self.audioPlayer.playing == false{
@@ -48,7 +48,7 @@ class AudioPlayer08: C4CanvasController {
     }
     
     func setupLabels() {
-        label = C4TextShape(text: "Current time is :\(audioPlayer.currentTime)", font: C4Font.systemFont(30.0))
+        label = TextShape(text: "Current time is :\(audioPlayer.currentTime)", font: Font.systemFont(30.0))
         self.canvas.add(label)
         label.center = self.canvas.center;
         self.canvas.add(label)
@@ -57,9 +57,9 @@ class AudioPlayer08: C4CanvasController {
     
     func updateLabel() {
         label.removeFromSuperview()
-        label = C4TextShape(text: "Current time is :\(audioPlayer.currentTime)", font: C4Font.systemFont(30.0))
+        label = TextShape(text: "Current time is :\(audioPlayer.currentTime)", font: Font.systemFont(30.0))
         self.canvas.add(label)
-        delay(0.01) {
+        wait(0.01) {
             self.updateLabel()
         }
         

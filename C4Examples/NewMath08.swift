@@ -8,10 +8,10 @@
 import C4
 import UIKit
 
-class NewMath08: C4CanvasController {
-    var mainPoints = [C4Point]()
-    var modifiedPoints = [C4Point]()
-    var insetFrame = C4Rect()
+class NewMath08: CanvasController {
+    var mainPoints = [Point]()
+    var modifiedPoints = [Point]()
+    var insetFrame = Rect()
     override func setup() {
         let margin = canvas.frame.size.height * 0.1
         insetFrame = inset(canvas.frame, dx: margin, dy: margin)
@@ -25,8 +25,8 @@ class NewMath08: C4CanvasController {
         repeat {
             let y = cos(x * 2 * M_PI) * -1//-1 inverts from iOS coordinates to normal cartesian
             let my = y //same as above
-            modifiedPoints.append(C4Point(x,my))
-            mainPoints.append(C4Point(x,y))
+            modifiedPoints.append(Point(x,my))
+            mainPoints.append(Point(x,y))
             x += 0.001
         } while x < 1
     }

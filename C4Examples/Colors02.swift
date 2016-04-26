@@ -9,11 +9,11 @@
 import C4
 import UIKit
 
-class Colors02: C4CanvasController {
+class Colors02: CanvasController {
     
-    var pink:C4Rectangle!
-    var blue:C4Rectangle!
-    var grey:C4Rectangle!
+    var pink:Rectangle!
+    var blue:Rectangle!
+    var grey:Rectangle!
     
     override func setup() {
         
@@ -29,18 +29,18 @@ class Colors02: C4CanvasController {
     
     func setupShapes() {
         
-        let frame = C4Rect(0, 0, self.canvas.width*0.9, self.canvas.height/5.0)
-        pink =  C4Rectangle(frame: frame)
-        blue =  C4Rectangle(frame: frame)
-        grey =  C4Rectangle(frame: frame)
+        let frame = Rect(0, 0, self.canvas.width*0.9, self.canvas.height/5.0)
+        pink =  Rectangle(frame: frame)
+        blue =  Rectangle(frame: frame)
+        grey =  Rectangle(frame: frame)
         
         pink.lineWidth = 0.0
         blue.lineWidth = 0.0
         grey.lineWidth = 0.5//allows us to see the border of grey
         
-        pink.center  = C4Point(self.canvas.center.x, self.canvas.height/4)
-        blue.center = C4Point(self.canvas.center.x, self.canvas.height*2/4)
-        grey.center = C4Point(self.canvas.center.x, self.canvas.height*3/4)
+        pink.center  = Point(self.canvas.center.x, self.canvas.height/4)
+        blue.center = Point(self.canvas.center.x, self.canvas.height*2/4)
+        grey.center = Point(self.canvas.center.x, self.canvas.height*3/4)
         
         self.canvas.add(pink)
         self.canvas.add(blue)
@@ -48,20 +48,20 @@ class Colors02: C4CanvasController {
     }
     
     func setupLabels() {
-        let f = C4Font(name: "ArialRoundedMTBold", size: 30.0)
-        var l:C4TextShape!
+        let f = Font(name: "ArialRoundedMTBold", size: 30.0)!
+        var l:TextShape!
         
-        l = C4TextShape(text: "C4Pink", font: f)
+        l = TextShape(text: "C4Pink", font: f)
         l.fillColor = white
         l.center = pink.center;
         self.canvas.add(l)
         
-        l = C4TextShape(text: "C4Blue", font: f)
+        l = TextShape(text: "C4Blue", font: f)
         l.fillColor = white
         l.center = blue.center;
         self.canvas.add(l)
         
-        l = C4TextShape(text: "C4Grey", font: f)
+        l = TextShape(text: "C4Grey", font: f)
         l.fillColor = lightGray
         l.center = grey.center;
         self.canvas.add(l)

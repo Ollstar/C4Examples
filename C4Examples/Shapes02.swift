@@ -8,29 +8,29 @@
 
 import C4
 
-class Shapes02 : C4CanvasController {
+class Shapes02 : CanvasController {
     override func setup() {
         //create a 2 point array for the line
-        let linePts = [C4Point(100,100),C4Point(200,200)]
-        let line = C4Line(linePts)
+        let linePts = [Point(100,100),Point(200,200)]
+        let line = Line(linePts)
         
         //create a 3 point array for the triangle
-        let trianglePts = [C4Point(0,100), C4Point(100,100), C4Point(100,0)]
-        let triangle = C4Triangle(trianglePts)
+        let trianglePts = [Point(0,100), Point(100,100), Point(100,0)]
+        let triangle = Triangle(trianglePts)
         
         //create a 4 point array for the polygon
-        let polygonPts = [C4Point(0,0), C4Point(100,0), C4Point(100,100), C4Point(0,100)]
-        let polygon = C4Polygon(polygonPts)
+        let polygonPts = [Point(0,0), Point(100,0), Point(100,100), Point(0,100)]
+        let polygon = Polygon(polygonPts)
         
         //create an array between 10 and 20 points for the random shape
-        var array = [C4Point]()
+        var array = [Point]()
         
         let randomCount = random(min: 10, max: 20)
         for _ in 0..<randomCount {
-            let p = C4Point(random(below:100),random(below:100))
+            let p = Point(random(below:100),random(below:100))
             array.append(p)
         }
-        let randomPolygon = C4Polygon()
+        let randomPolygon = Polygon()
         randomPolygon.points = array
         
         //Figure out the vertical whitespace (i.e. the space between shapes and the edges of the canvas)
@@ -41,7 +41,7 @@ class Shapes02 : C4CanvasController {
         whiteSpace = whiteSpace/5; // because there are 5 gaps
         
         //create a point that will define the center of each shape, aligned to the middle of the canvas
-        var center = C4Point()
+        var center = Point()
         center.x = self.canvas.center.x
         
         //set the y position for the line

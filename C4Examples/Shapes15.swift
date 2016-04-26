@@ -9,18 +9,18 @@
 import UIKit
 import C4
 
-class Shapes15: C4CanvasController {
+class Shapes15: CanvasController {
 
-    var line:C4Line!
+    var line:Line!
     var patternWidth = Double()
     
     override func setup() {
 
     //create the end points for a line
-    let endPoints = [C4Point(),C4Point(self.canvas.width, 0)]
+    let endPoints = [Point(),Point(self.canvas.width, 0)]
     
     //create the line and center it
-    line = C4Line(endPoints)
+    line = Line(endPoints)
     line.center = self.canvas.center
     
     //create a dash pattern
@@ -41,9 +41,9 @@ class Shapes15: C4CanvasController {
     
     //add the line to the canvas
         self.canvas.add(line)
-    //animate it after a short delay
+    //animate it after a short wait
 
-        let anim = C4ViewAnimation(duration:300.0) {    //duration = 5 minutes (60s * 5 = 300);
+        let anim = ViewAnimation(duration:300.0) {    //duration = 5 minutes (60s * 5 = 300);
 
             self.line.strokeColor = C4Blue
             //set the final dash phase to the entire width of the pattern
@@ -52,7 +52,7 @@ class Shapes15: C4CanvasController {
         
         anim.autoreverses = true
         
-        delay(0.1){
+        wait(0.1){
             anim.animate()
         }
     }

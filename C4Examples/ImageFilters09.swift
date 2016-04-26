@@ -8,11 +8,11 @@
 
 import C4
 
-class ImageFilters09: C4CanvasController {
+class ImageFilters09: CanvasController {
     override func setup() {
         
-        let image = C4Image("burnImage")
-        var filter = C4Sharpen()
+        let image = Image("burnImage")!
+        var filter = Sharpen()
         filter.sharpness = 5
         image.apply(filter)
         image.center = canvas.center

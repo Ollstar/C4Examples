@@ -8,10 +8,10 @@
 
 import C4
 
-class Fonts04: C4CanvasController {
+class Fonts04: CanvasController {
     override func setup() {
         //will print to the console ALL the family names of availble fonts
-        let familyNames = C4Font.familyNames()
+        let familyNames = Font.familyNames()
         
         for strings in familyNames {
             print(strings)

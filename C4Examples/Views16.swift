@@ -8,15 +8,15 @@
 
 import C4
 
-class Views16: C4CanvasController {
+class Views16: CanvasController {
     
-    var m:C4Image!
-    var img:C4Image!
+    var m:Image!
+    var img:Image!
     
     override func setup() {
         
-        img = C4Image("ollie_pic")
-        m = C4Image("burnImage")
+        img = Image("ollie_pic")
+        m = Image("burnImage")
         
         m.width = img.width
         

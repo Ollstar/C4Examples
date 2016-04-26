@@ -9,17 +9,17 @@
 import UIKit
 import C4
 
-class Shapes17: C4CanvasController {
+class Shapes17: CanvasController {
     
-    var rect:C4Rectangle!
-    var star:C4Star!
+    var rect:Rectangle!
+    var star:Star!
     var patternWidth = Double()
     
     override func setup() {
         //create the square and center it
-        let f = C4Rect(0,0,250,250)
-        rect = C4Rectangle(frame: f)
-        rect.corner = C4Size(10,10)
+        let f = Rect(0,0,250,250)
+        rect = Rectangle(frame: f)
+        rect.corner = Size(10,10)
         rect.center = self.canvas.center
         
         patternWidth = 4*rect.width;
@@ -27,7 +27,7 @@ class Shapes17: C4CanvasController {
         
         //thicken the line and set its dash pattern
         rect.lineWidth = 10.0
-        rect.fillColor = C4Color(UIColor.clearColor())
+        rect.fillColor = Color(UIColor.clearColor())
         rect.lineCap = .Round
         rect.lineDashPattern = dashPattern
         //add the line to the canvas
@@ -38,11 +38,11 @@ class Shapes17: C4CanvasController {
         dashPattern[1] = 10
         
         //create a font for the text shape
-        //    f = [C4Font fontWithName:@"ArialRoundedMTBold" size:320];
+        //    f = [Font fontWithName:@"ArialRoundedMTBold" size:320];
         
         //create the text shape and center it
         
-        star = C4Star(
+        star = Star(
             center: canvas.center,
             pointCount: 5,
             innerRadius: 50,
@@ -50,15 +50,15 @@ class Shapes17: C4CanvasController {
         
         
         //style the text shape and set its dash pattern
-        star.fillColor = C4Color(UIColor.clearColor())
+        star.fillColor = Color(UIColor.clearColor())
         star.lineWidth = 5.0
         star.lineCap = .Round
         star.lineDashPattern = dashPattern
         //add the text shape to the canvas
         canvas.add(star)
         
-        //animate it after a short delay
-        let anim = C4ViewAnimation(duration:10.0) {    //duration = 3 minutes (60s * 3 = 180);
+        //animate it after a short wait
+        let anim = ViewAnimation(duration:10.0) {    //duration = 3 minutes (60s * 3 = 180);
             
             self.rect.strokeColor = C4Blue
             self.star.strokeColor = C4Grey
@@ -72,7 +72,7 @@ class Shapes17: C4CanvasController {
         anim.autoreverses = true
         anim.repeats = true
         
-        delay(0.1){
+        wait(0.1){
             anim.animate()
         }
         

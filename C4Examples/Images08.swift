@@ -9,7 +9,7 @@
 import C4
 import UIKit
 
-class Images08: C4CanvasController {
+class Images08: CanvasController {
     
     
     override func setup() {
@@ -34,10 +34,10 @@ class Images08: C4CanvasController {
             }
         }
         
-        let img = C4Image(pixels: rawData, size: C4Size(width, height))
-        let s = C4Circle(center: img.center, radius: img.height/2)
+        let img = Image(pixels: rawData, size: Size(width, height))
+        let s = Circle(center: img.center, radius: img.height/2)
         
-        let a = C4ViewAnimation(duration: 100) {
+        let a = ViewAnimation(duration: 100) {
             s.transform.scale(5, 10)
         }
         a.repeats = true

@@ -9,22 +9,22 @@
 import C4
 import UIKit
 
-class MathComparePaths : C4View {
+class MathComparePaths : View {
     
-    var whitePath : C4Shape?
-    var grayPath : C4Shape?
-    var maskPath : C4Shape?
-    var button : C4Shape?
-    var gradient : C4Gradient?
+    var whitePath : Shape?
+    var grayPath : Shape?
+    var maskPath : Shape?
+    var button : Shape?
+    var gradient : Gradient?
     
-    var mainPoints : [C4Point]?
-    var modifiedPoints : [C4Point]?
+    var mainPoints : [Point]?
+    var modifiedPoints : [Point]?
     var distances = [0.0]
     var totalDistance = 0.0
     var dIndex = 0.0
-    var insetFrame = C4Rect()
+    var insetFrame = Rect()
     
-    convenience init(frame: C4Rect, insetFrame: C4Rect, points: [C4Point], modifiedPoints: [C4Point]) {
+    convenience init(frame: Rect, insetFrame: Rect, points: [Point], modifiedPoints: [Point]) {
         self.init()
         self.frame = frame
         self.insetFrame = insetFrame
@@ -48,7 +48,7 @@ class MathComparePaths : C4View {
     func transformPoints() {
         assert(mainPoints != nil, "mainPoints couldn't be extracted")
         
-        var t = C4Transform.makeTranslation(C4Vector(x: insetFrame.origin.x, y: insetFrame.center.y))
+        var t = Transform.makeTranslation(Vector(x: insetFrame.origin.x, y: insetFrame.center.y))
         t.scale(insetFrame.size.width, insetFrame.size.height/2.0)
         
         for i in 0..<mainPoints!.count {
@@ -74,15 +74,17 @@ class MathComparePaths : C4View {
     }
     
     func createGradient() {
-        let gr = C4Gradient(frame: frame, colors: [C4Blue,C4Purple], locations: [0,1])
-        gr.startPoint = C4Point(insetFrame.origin.x/width,0)
-        gr.endPoint = C4Point(insetFrame.max.x/width,0)
+        let gr = Gradient(frame: frame)
+        gr.colors = [C4Blue,C4Purple]
+        gr.locations = [0,1]
+        gr.startPoint = Point(insetFrame.origin.x/width,0)
+        gr.endPoint = Point(insetFrame.max.x/width,0)
         gradient = gr
         gradient?.layer?.mask = maskPath?.layer
     }
     
     func createMaskPath() {
-        let mp = C4Polygon(modifiedPoints!)
+        let mp = Polygon(modifiedPoints!)
         mp.lineWidth = 35.0
         mp.fillColor = clear
         mp.strokeEnd = 0.00001
@@ -90,7 +92,7 @@ class MathComparePaths : C4View {
     }
     
     func createWhitePath() {
-        let wp = C4Polygon(modifiedPoints!)
+        let wp = Polygon(modifiedPoints!)
         wp.lineWidth = 2.0
         wp.fillColor = clear
         wp.strokeColor = white
@@ -99,7 +101,7 @@ class MathComparePaths : C4View {
     }
     
     func createGrayPath() {
-        let gp = C4Polygon(mainPoints!)
+        let gp = Polygon(mainPoints!)
         gp.lineWidth = 3.0
         gp.fillColor = clear
         gp.strokeColor = black
@@ -110,11 +112,11 @@ class MathComparePaths : C4View {
     func createButton() {
         var s = Shadow()
         s.opacity = 1.0
-        s.offset = C4Size(0,2)
+        s.offset = Size(0,2)
         s.radius = 1
         s.opacity = 0.5
         
-        let b = C4Circle(center: C4Point(), radius: 15)
+        let b = Circle(center: Point(), radius: 15)
         b.fillColor = white
         b.strokeColor = clear
         b.center = modifiedPoints!.first!
@@ -129,8 +131,8 @@ class MathComparePaths : C4View {
         b.layer?.timeOffset = 0.0
         button = b
         
-        button?.addPanGestureRecognizer { (location, translation, velocity, state) -> () in
-            C4ShapeLayer.disableActions = true
+        button?.addPanGestureRecognizer { (center, location, translation, velocity, state) -> () in
+            ShapeLayer.disableActions = true
             guard let b = self.button else {
                 print("Could not extract button")
                 return
@@ -147,7 +149,7 @@ class MathComparePaths : C4View {
             
             if state == .Ended {
                 if let pl = b.layer?.presentationLayer() as? CALayer {
-                    b.center = C4Point(pl.position)
+                    b.center = Point(pl.position)
                 }
             }
         }

@@ -8,15 +8,15 @@
 
 import C4
 
-class Interaction04: C4CanvasController {
+class Interaction04: CanvasController {
     
-    var s1:C4Circle!
+    var s1:Circle!
     
     override func setup() {
-        s1 = C4Circle(center: self.canvas.center, radius: 50)
+        s1 = Circle(center: self.canvas.center, radius: 50)
         
-        let a = s1.addPanGestureRecognizer { (location, translation, velocity, state) -> () in
-            self.s1.fillColor = C4Color(red: random01(), green: random01(), blue: random01(), alpha: random01())
+        let a = s1.addPanGestureRecognizer {(center, location, translation, velocity, state) -> () in
+            self.s1.fillColor = Color(red: random01(), green: random01(), blue: random01(), alpha: random01())
         }
         a.maximumNumberOfTouches = 2
         canvas.add(s1)

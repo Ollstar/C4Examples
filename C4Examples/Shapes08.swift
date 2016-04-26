@@ -8,15 +8,15 @@
 
 import C4
 
-class Shapes08: C4CanvasController {
+class Shapes08: CanvasController {
     
-    var circle:C4Circle!
+    var circle:Circle!
     
     override func setup() {
         
         
         //create and position the shape with default colors
-        circle = C4Circle(center: self.canvas.center, radius: 50)
+        circle = Circle(center: self.canvas.center, radius: 50)
         
         //change the line width
         circle.lineWidth = 10

@@ -8,7 +8,7 @@
 
 import C4
 
-class Shapes04 : C4CanvasController {
+class Shapes04 : CanvasController {
     override func setup() {
         
         var arcCenter = self.canvas.center;
@@ -21,21 +21,21 @@ class Shapes04 : C4CanvasController {
         
         //create the counter-clockwise arc
         
-        let counterClockwiseArc = C4Arc(center: arcCenter,radius: 100, start: M_PI, end: 2*M_PI, clockwise: false)
+        let counterClockwiseArc = Arc(center: arcCenter,radius: 100, start: M_PI, end: 2*M_PI, clockwise: false)
         
         
         //create the clockwise arc, first shifting the center of the arc
         arcCenter.x += 8
         arcCenter.y += 14
-        let clockwiseArc = C4Arc(center: arcCenter,radius: 100, start: M_PI, end: 2*M_PI, clockwise: true)
+        let clockwiseArc = Arc(center: arcCenter,radius: 100, start: M_PI, end: 2*M_PI, clockwise: true)
         
         //create the counter-clockwise wedge
-        let counterClockwiseWedge = C4Wedge(center: wedgeCenter, radius: 100, start: M_PI_4 * 3, end: M_PI_4, clockwise: false)
+        let counterClockwiseWedge = Wedge(center: wedgeCenter, radius: 100, start: M_PI_4 * 3, end: M_PI_4, clockwise: false)
         
         //create the clockwise wedge, first shifting the center of the wedge
         //        wedgeCenter.x += -5;
         wedgeCenter.y += 14;
-        let clockwiseWedge = C4Wedge(center: wedgeCenter, radius: 100, start: M_PI_4 * 3, end: M_PI_4, clockwise: true)
+        let clockwiseWedge = Wedge(center: wedgeCenter, radius: 100, start: M_PI_4 * 3, end: M_PI_4, clockwise: true)
         
         //add the shapes to the canvas
         self.canvas.add(counterClockwiseArc)

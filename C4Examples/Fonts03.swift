@@ -8,7 +8,7 @@
 
 import C4
 
-class Fonts03: C4CanvasController {
+class Fonts03: CanvasController {
     override func setup() {
         
         //Best seen on iPad / iPad simulator
@@ -16,13 +16,13 @@ class Fonts03: C4CanvasController {
         var textString:String!
         
         //create an initial font
-        var f = C4Font(name:"ArialRoundedMTBold", size:45.0)
+        var f = Font(name:"ArialRoundedMTBold", size:45.0)!
         
         //create a point to reuse for all labels
-        var p = C4Point(10, 0);
+        var p = Point(10, 0);
         
         //create an initial label, position it, add it to the canvas
-        var l = C4TextShape(text: "Font Properties", font: f)
+        var l = TextShape(text: "Font Properties", font: f)!
         l.origin = p
         p.y += l.height + 10; //update p for the next label
         self.canvas.add(l)
@@ -31,49 +31,49 @@ class Fonts03: C4CanvasController {
         
         //create a formatted string, with the current property variable, create a label...
         textString = "Family name: \(f.familyName)";
-        l = C4TextShape(text: textString, font: f)
+        l = TextShape(text: textString, font: f)!
         l.origin = p
         p.y += l.height + 10
         self.canvas.add(l)
         
         textString = "Font name: \(f.fontName)";
-        l = C4TextShape(text: textString, font: f)
+        l = TextShape(text: textString, font: f)!
         l.origin = p;
         p.y += l.height + 10;
         self.canvas.add(l)
         
         textString = String.localizedStringWithFormat("Point size: %.2f", f.pointSize)
-        l = C4TextShape(text: textString, font: f)
+        l = TextShape(text: textString, font: f)!
         l.origin = p;
         p.y += l.height + 10;
         self.canvas.add(l)
         
         textString = String.localizedStringWithFormat("Ascender: %.2f", f.ascender)
-        l = C4TextShape(text: textString, font: f)
+        l = TextShape(text: textString, font: f)!
         l.origin = p;
         p.y += l.height + 10;
         self.canvas.add(l)
         
         textString = String.localizedStringWithFormat("Descender: %.2f", f.descender)
-        l = C4TextShape(text: textString, font: f)
+        l = TextShape(text: textString, font: f)!
         l.origin = p;
         p.y += l.height + 10;
         self.canvas.add(l)
         
         textString = String.localizedStringWithFormat("Cap Height: %.2f", f.capHeight)
-        l = C4TextShape(text: textString, font: f)
+        l = TextShape(text: textString, font: f)!
         l.origin = p;
         p.y += l.height + 10;
         self.canvas.add(l)
         
         textString = String.localizedStringWithFormat("X-Height: %.2f", f.xHeight)
-        l = C4TextShape(text: textString, font: f)
+        l = TextShape(text: textString, font: f)!
         l.origin = p;
         p.y += l.height + 10;
         self.canvas.add(l)
         
         textString = String.localizedStringWithFormat("Line Height: %.2f", f.lineHeight)
-        l = C4TextShape(text: textString, font: f)
+        l = TextShape(text: textString, font: f)!
         l.origin = p;
         p.y += l.height + 10;
         self.canvas.add(l)

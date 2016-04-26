@@ -8,10 +8,10 @@
 
 import C4
 
-class Views04: C4CanvasController {
+class Views04: CanvasController {
     
-    var s1:C4Rectangle!
-    var s2:C4Ellipse!
+    var s1:Rectangle!
+    var s2:Ellipse!
     
     override func setup() {
         setupShapes()
@@ -21,12 +21,12 @@ class Views04: C4CanvasController {
     }
     
     func setupShapes() {
-        let frame = C4Rect(0,0,100,100)
+        let frame = Rect(0,0,100,100)
         
-        self.s1 = C4Rectangle(frame: frame)
+        self.s1 = Rectangle(frame: frame)
         self.canvas.add(s1)
         
-        self.s2 = C4Ellipse(frame: frame)
+        self.s2 = Ellipse(frame: frame)
         self.canvas.add(s2)
         
     }

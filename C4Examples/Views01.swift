@@ -8,11 +8,11 @@
 
 import C4
 
-class Views01: C4CanvasController {
+class Views01: CanvasController {
     
-    var s1:C4Rectangle!
-    var s2:C4Rectangle!
-    var s3:C4Rectangle!
+    var s1:Rectangle!
+    var s2:Rectangle!
+    var s3:Rectangle!
     
     override func setup() {
         
@@ -24,11 +24,11 @@ class Views01: C4CanvasController {
     }
     
     func setupShapes() {
-        let rect = C4Rect(0, 0, 150, 150)
+        let rect = Rect(0, 0, 150, 150)
         
-        s1 = C4Rectangle(frame: rect)
-        s2 = C4Rectangle(frame: rect)
-        s3 = C4Rectangle(frame: rect)
+        s1 = Rectangle(frame: rect)
+        s2 = Rectangle(frame: rect)
+        s3 = Rectangle(frame: rect)
         
         var currentCenter = self.canvas.center
         

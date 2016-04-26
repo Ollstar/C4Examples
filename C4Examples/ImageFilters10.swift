@@ -8,11 +8,11 @@
 
 import C4
 
-class ImageFilters10: C4CanvasController {
+class ImageFilters10: CanvasController {
     override func setup() {
         
-        let image = C4Image("burnImage")
-        var filter = C4Twirl()
+        let image = Image("burnImage")!
+        var filter = Twirl()
         filter.angle = 50
         filter.center = canvas.center
         filter.radius = 100

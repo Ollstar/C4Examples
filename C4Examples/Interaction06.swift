@@ -8,15 +8,15 @@
 
 import C4
 
-class Interaction06: C4CanvasController {
+class Interaction06: CanvasController {
     
-    var s1:C4Circle!
+    var s1:Circle!
     
     override func setup() {
-        s1 = C4Circle(center: self.canvas.center, radius: 50)
+        s1 = Circle(center: self.canvas.center, radius: 50)
         
-        let a = s1.addLongPressGestureRecognizer({ (location, state) -> () in
-            self.s1.fillColor = C4Color(red: random01(), green: random01(), blue: random01(), alpha: random01())
+        let a = s1.addLongPressGestureRecognizer({ (center, location, state) -> () in
+            self.s1.fillColor = Color(red: random01(), green: random01(), blue: random01(), alpha: random01())
         })
         a.minimumPressDuration = 2
         canvas.add(s1)

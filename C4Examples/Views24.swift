@@ -9,11 +9,11 @@
 import C4
 import UIKit
 
-class Views24: C4CanvasController {
+class Views24: CanvasController {
     
-    var s1:C4Circle!
-    var s2:C4Circle!
-    var s3:C4Circle!
+    var s1:Circle!
+    var s2:Circle!
+    var s3:Circle!
     
     
     
@@ -22,7 +22,7 @@ class Views24: C4CanvasController {
         setupShapes()
         
         //First we create a CGSize to re-use later
-        var currentShadowOffset = C4Size()
+        var currentShadowOffset = Size()
         
         //Then we say s1's shadow offset is equal to our CGSize "currentShadowOffset"
         s1.shadow.offset = currentShadowOffset
@@ -41,24 +41,24 @@ class Views24: C4CanvasController {
         
         var currentCenter = self.canvas.center
         
-        s1 = C4Circle(center: currentCenter, radius: 44)
-        s2 = C4Circle(center: currentCenter, radius: 44)
-        s3 = C4Circle(center: currentCenter, radius: 44)
+        s1 = Circle(center: currentCenter, radius: 44)
+        s2 = Circle(center: currentCenter, radius: 44)
+        s3 = Circle(center: currentCenter, radius: 44)
         
         currentCenter.x -= 100
         s1.center = currentCenter
         self.canvas.add(s1)
-        s1.shadow.offset = C4Size(30, 50)
+        s1.shadow.offset = Size(30, 50)
         
         currentCenter.x += 100
         s2.center = currentCenter
         self.canvas.add(s2)
-        s2.shadow.offset = C4Size(30, 50)
+        s2.shadow.offset = Size(30, 50)
         
         currentCenter.x += 100
         s3.center = currentCenter
         self.canvas.add(s3)
-        s3.shadow.offset = C4Size(30, 50)
+        s3.shadow.offset = Size(30, 50)
         
         
         s1.shadow.opacity = 0.8

@@ -8,20 +8,20 @@
 
 import C4
 
-class Fonts05: C4CanvasController {
+class Fonts05: CanvasController {
     override func setup() {
         //This example is best for iPad / iPad simulator
         //get all the family names
-        let familyNamesArray = C4Font.familyNames()
+        let familyNamesArray = Font.familyNames()
         
-        var point = C4Point(10, 10)
+        var point = Point(10, 10)
         
         //cycle thought all the family names, creating labels for each one
         for familyName in familyNamesArray {
-            let fontNames = C4Font.fontNames(familyName as! String)
+            let fontNames = Font.fontNames(familyName as! String)
             for fontName in fontNames {
-                let f = C4Font(name: fontName as! String, size: 11.0)
-                let l = C4TextShape(text: fontName as! String, font: f)
+                let f = Font(name: fontName as! String, size: 11.0)!
+                let l = TextShape(text: fontName as! String, font: f)!
                 l.origin = point
                 point.y += l.height
                 if (point.y > self.canvas.height) {

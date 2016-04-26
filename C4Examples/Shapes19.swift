@@ -9,7 +9,7 @@
 import UIKit
 import C4
 
-class Shapes19: C4CanvasController {
+class Shapes19: CanvasController {
     
     override func setup() {
     
@@ -20,10 +20,10 @@ class Shapes19: C4CanvasController {
         let x2 = Double(self.canvas.width-x1)
         
         //create and array of points to use for lines
-        var linePoints = [C4Point(x1, 1),C4Point(x2, 1)]
+        var linePoints = [Point(x1, 1),Point(x2, 1)]
         
         //create the first line, at the default width
-        let line = C4Line(linePoints)
+        let line = Line(linePoints)
         self.canvas.add(line)
         //shift the line points
         linePoints[0].y *= 2
@@ -37,7 +37,7 @@ class Shapes19: C4CanvasController {
             linePoints[0].y += currentLineWidth+1.0
             linePoints[1].y += currentLineWidth+1.0
             //create a new line and add it to the canvas
-            let newLine = C4Line(linePoints)
+            let newLine = Line(linePoints)
             newLine.lineWidth = currentLineWidth
             self.canvas.add(newLine)
             step += 1.0

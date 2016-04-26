@@ -10,7 +10,7 @@
 import C4
 import UIKit
 
-class Images07: C4CanvasController {
+class Images07: CanvasController {
     
     
     override func setup() {
@@ -35,7 +35,7 @@ class Images07: C4CanvasController {
             }
         }
         
-        let img = C4Image(pixels: rawData, size: C4Size(width, height))
+        let img = Image(pixels: rawData, size: Size(width, height))
         img.center = canvas.center
         canvas.add(img)
         
