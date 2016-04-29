@@ -16,17 +16,17 @@ class Shapes06 : CanvasController {
     
     override func setup() {
         
-        var p:Point = self.canvas.center;
+        var p:Point = self.canvas.center
         
         //create and position the shape with default colors
         let r = Rect(0,0,200,200)
         defaultColorShape = Ellipse(frame: r)
-        p.y = self.canvas.height / 3;
-        defaultColorShape.center = p;
+        p.x = self.canvas.width / 3
+        defaultColorShape.center = p
         
         //create and position the shape with custom colors
         customColorShape = Ellipse(frame: r)
-        p.y = self.canvas.height * 2 / 3
+        p.x = self.canvas.width * 2 / 3
         customColorShape.center = p
         
         //set the fill and stroke colors for the custom shape

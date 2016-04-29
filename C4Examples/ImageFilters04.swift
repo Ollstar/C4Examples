@@ -11,7 +11,7 @@ import C4
 class ImageFilters04: CanvasController {
     override func setup() {
         
-        let image = Image("burnImage")!
+        let image = Image("rocket")!
         var filter = DotScreen()
         filter.center = canvas.center
         filter.width = 5

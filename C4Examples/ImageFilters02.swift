@@ -11,7 +11,7 @@ import C4
 class ImageFilters02: CanvasController {
     override func setup() {
         
-        let image = Image("burnImage")!
+        let image = Image("rocket")!
         let filter = Bloom()
 //        filter.image = Image("rocket")
         image.apply(filter)

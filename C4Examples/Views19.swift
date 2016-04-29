@@ -15,7 +15,7 @@ class Views19: CanvasController {
     
     override func setup() {
         
-        img = Image("ollie_pic")
+        img = Image("rocket")
         s = Rectangle(frame: Rect(0,0,400,50))
         img.center = self.canvas.center
         s.center = Point(img.width/2 ,img.height/2)

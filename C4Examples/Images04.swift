@@ -12,7 +12,7 @@ class Images04 : CanvasController {
     
     override func setup() {
         
-        let img = Image("ollie_pic")!
+        let img = Image("rocket")!
         img.frame = self.canvas.frame
         img.center = self.canvas.center;
         self.canvas.add(img)

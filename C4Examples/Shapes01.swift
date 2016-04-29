@@ -18,7 +18,7 @@ class Shapes01: CanvasController {
         
         
         //Create a rectangle
-        rectangle = Rectangle(frame: Rect(0,0,200,100))
+        rectangle = Rectangle(frame: Rect(0,0,100,200))
         
         //Create a square (same w & h)
         square = Rectangle(frame: Rect(0,0,100,100))
@@ -30,28 +30,28 @@ class Shapes01: CanvasController {
         circle = Circle(center: Point(0,0), radius: 50) // same dimensions as square
         
         //Figure out the vertical whitespace (i.e. the space between shapes and the edges of the canvas)
-        var whiteSpace = self.canvas.height - 4 * rectangle.height
+        var whiteSpace = self.canvas.width - 4 * rectangle.width
         
         whiteSpace = whiteSpace/5 // because there are 5 gaps
         
         //center all the shapes to the canvas
         var center = Point()
-        center.x = self.canvas.center.x
+        center.y = self.canvas.center.y
         
         //set the y position for the rectangle
-        center.y = whiteSpace + rectangle.height/2
+        center.x = whiteSpace + rectangle.width/2
         rectangle.center = center
         
         //set the y position for the square
-        center.y = center.y + whiteSpace + square.height
+        center.x = center.x + whiteSpace + square.height
         square.center = center
         
         //set the y position for the circle
-        center.y = center.y + whiteSpace + circle.height
+        center.x = center.x + whiteSpace + circle.height
         circle.center = center
         
         //set the y position for the ellipse
-        center.y = center.y + whiteSpace + ellipse.height
+        center.x = center.x + whiteSpace + ellipse.width
         ellipse.center = center
         
         //add all the objects to the canvas

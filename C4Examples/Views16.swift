@@ -15,8 +15,8 @@ class Views16: CanvasController {
     
     override func setup() {
         
-        img = Image("ollie_pic")
-        m = Image("burnImage")
+        img = Image("rocket")!
+        m = Image("rocket")!
         
         m.width = img.width
         

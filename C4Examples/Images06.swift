@@ -11,7 +11,7 @@ import C4
 class Images06: CanvasController {
     
     override func setup() {
-        let img1 = Image("ollie_pic")!
+        let img1 = Image("rocket")!
         img1.center = Point(self.canvas.center.x, self.canvas.height / 3)
         
         let img2 = Image(c4image: img1)

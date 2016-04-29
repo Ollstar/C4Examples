@@ -17,11 +17,11 @@ class Shapes15: CanvasController {
     override func setup() {
 
     //create the end points for a line
-    let endPoints = [Point(),Point(self.canvas.width, 0)]
+    let endPoints = [Point(), Point(self.canvas.width, 0)]
     
     //create the line and center it
     line = Line(endPoints)
-    line.center = self.canvas.center
+    line.center.y = self.canvas.center.y
     
     //create a dash pattern
     //this pattern is [1,1,2,2,3,3,..,768,768];

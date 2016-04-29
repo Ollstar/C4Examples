@@ -11,7 +11,7 @@ import C4
 class ImageFilters09: CanvasController {
     override func setup() {
         
-        let image = Image("burnImage")!
+        let image = Image("rocket")!
         var filter = Sharpen()
         filter.sharpness = 5
         image.apply(filter)

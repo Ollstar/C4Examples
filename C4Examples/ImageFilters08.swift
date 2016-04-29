@@ -11,7 +11,7 @@ import C4
 class ImageFilters08: CanvasController {
     override func setup() {
         
-        let image = Image("burnImage")!
+        let image = Image("rocket")!
         var filter = Sepia()
         filter.intensity = 5
         image.apply(filter)

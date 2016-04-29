@@ -22,7 +22,7 @@ class Shapes12: CanvasController {
         start = Ellipse(frame: shapeFrame)
         start.lineWidth = 30.0
         start.fillColor = Color(UIColor.clearColor())
-        start.center = Point(self.canvas.center.x, self.canvas.height/4);
+        start.center = Point(self.canvas.width/4, self.canvas.center.y);
         self.canvas.add(start)
         
         //second shape will animate the end to the start
@@ -40,7 +40,7 @@ class Shapes12: CanvasController {
         both.lineWidth = 30.0
         both.strokeColor = C4Pink
         both.fillColor = Color(UIColor.clearColor())
-        both.center = Point(self.canvas.center.x, self.canvas.height*3/4);
+        both.center = Point(self.canvas.width*3/4, self.canvas.center.y);
         self.canvas.add(both)
        
         let anim1 = ViewAnimation(duration:2.0) {

@@ -11,12 +11,12 @@ import C4
 class Shapes04 : CanvasController {
     override func setup() {
         
-        var arcCenter = self.canvas.center;
-        arcCenter.y = self.canvas.height * 1/3
+        var arcCenter = self.canvas.center
+        arcCenter.x = self.canvas.width * 1/3
         
-        var wedgeCenter = self.canvas.center;
+        var wedgeCenter = self.canvas.center
         
-        wedgeCenter.y = self.canvas.height * 2/3
+        wedgeCenter.x = self.canvas.width * 2/3
         
         
         //create the counter-clockwise arc
@@ -25,8 +25,8 @@ class Shapes04 : CanvasController {
         
         
         //create the clockwise arc, first shifting the center of the arc
-        arcCenter.x += 8
-        arcCenter.y += 14
+//        arcCenter.x += 8
+        arcCenter.y -= 14
         let clockwiseArc = Arc(center: arcCenter,radius: 100, start: M_PI, end: 2*M_PI, clockwise: true)
         
         //create the counter-clockwise wedge
@@ -34,7 +34,7 @@ class Shapes04 : CanvasController {
         
         //create the clockwise wedge, first shifting the center of the wedge
         //        wedgeCenter.x += -5;
-        wedgeCenter.y += 14;
+        wedgeCenter.y -= 14
         let clockwiseWedge = Wedge(center: wedgeCenter, radius: 100, start: M_PI_4 * 3, end: M_PI_4, clockwise: true)
         
         //add the shapes to the canvas

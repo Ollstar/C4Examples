@@ -20,8 +20,8 @@ class Shapes03 : CanvasController {
         let bezierControlPoints = [Point(-100, 200), Point(300, 0)]
         
         //create the bezier curve
-        let bezierCurve = Curve(begin: bezierEndPoints[0], control0: bezierControlPoints[0], control1: bezierControlPoints[1], end: bezierEndPoints[0])
-        bezierCurve.center = Point(self.canvas.center.x, self.canvas.height * 1/3);
+        let bezierCurve = Curve(begin: bezierEndPoints[0], control0: bezierControlPoints[0], control1: bezierControlPoints[1], end: bezierEndPoints[1])
+        bezierCurve.center = Point(self.canvas.width * 1/3, self.canvas.center.y);
         
         
         //create the end points for the quadratic curve
@@ -32,7 +32,7 @@ class Shapes03 : CanvasController {
         
         //create the quadratic curve
         let quadCurve = QuadCurve(begin: quadEndPoints[0], control: quadControlPoint, end: quadEndPoints[1])
-        quadCurve.center = Point(self.canvas.center.x, self.canvas.height * 2/3)
+        quadCurve.center = Point(self.canvas.width * 2/3, self.canvas.center.y)
         
         //add the curves to the canvas
         self.canvas.add(bezierCurve)

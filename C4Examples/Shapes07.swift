@@ -33,11 +33,11 @@ class Shapes07: CanvasController {
         
         //create poly1 and style it
         poly1 =  Polygon(polyPoints)
-        poly1.center = Point(self.canvas.center.x, self.canvas.height/3);
+        poly1.center = Point(self.canvas.width/3, self.canvas.center.y);
         
         //create poly2 and style it
         poly2 = Polygon(polyPoints)
-        poly2.center = Point(self.canvas.center.x, self.canvas.height*2/3);
+        poly2.center = Point(self.canvas.width*2/3, self.canvas.center.y);
         
         
         

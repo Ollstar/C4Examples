@@ -11,7 +11,7 @@ import C4
 class ImageFilters10: CanvasController {
     override func setup() {
         
-        let image = Image("burnImage")!
+        let image = Image("rocket")!
         var filter = Twirl()
         filter.angle = 50
         filter.center = canvas.center

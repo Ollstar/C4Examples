@@ -23,7 +23,7 @@ class Views20: CanvasController {
     }
     
     func setupShapes() {
-        img = Image("ollie_pic")
+        img = Image("rocket")
         s1 = Rectangle(frame: Rect(0,0,600,50))
         s2 = Rectangle(frame: Rect(0, 0, 50, 600))
         

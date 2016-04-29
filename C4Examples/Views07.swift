@@ -15,7 +15,7 @@ class Views07: CanvasController {
 
     override func setup() {
  
-            normalImage = Image("ollie_pic")
+            normalImage = Image("rocket")
             normalImage.center = self.canvas.center
             changedImage = Image(c4image: normalImage)
         

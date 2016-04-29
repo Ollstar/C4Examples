@@ -21,7 +21,7 @@ class Images05 : CanvasController {
     
     override func setup() {
         //create two invisible images
-        i1 = Image("ollie_pic")
+        i1 = Image("rocket")
         i2 = Image("image1")
         
         //create the visible image from the first invisible image

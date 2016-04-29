@@ -15,8 +15,8 @@ class Views18: CanvasController {
     
     override func setup() {
         
-        img = Image("ollie_pic")
-        m = Image("ollie_pic")
+        img = Image("rocket")
+        m = Image("rocket")
         
         m.width = img.width
         img.center = self.canvas.center

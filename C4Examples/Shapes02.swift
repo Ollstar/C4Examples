@@ -34,30 +34,30 @@ class Shapes02 : CanvasController {
         randomPolygon.points = array
         
         //Figure out the vertical whitespace (i.e. the space between shapes and the edges of the canvas)
-        let ch = canvas.height
-        let th = line.height + triangle.height + polygon.height + randomPolygon.height
+        let ch = canvas.width
+        let th = line.width + triangle.width + polygon.width + randomPolygon.width
         var whiteSpace = ch - th
         
         whiteSpace = whiteSpace/5; // because there are 5 gaps
         
         //create a point that will define the center of each shape, aligned to the middle of the canvas
         var center = Point()
-        center.x = self.canvas.center.x
+        center.y = self.canvas.center.y
         
         //set the y position for the line
-        center.y = whiteSpace + line.height/2
+        center.x = whiteSpace + line.width/2
         line.center = center
         
         //set the y position for the triangle
-        center.y = center.y + whiteSpace + triangle.height
+        center.x = center.x + whiteSpace + triangle.height
         triangle.center = center
         
         //set the y position for the polygon
-        center.y = center.y + whiteSpace + polygon.height
+        center.x = center.x + whiteSpace + polygon.height
         polygon.center = center
         
         //set the y position for the random shape
-        center.y = center.y + whiteSpace + randomPolygon.height;
+        center.x = center.x + whiteSpace + randomPolygon.height;
         randomPolygon.center = center;
         
         //add shapes to canvas

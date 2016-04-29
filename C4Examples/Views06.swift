@@ -22,8 +22,8 @@ class Views06: CanvasController {
     }
     
     func setupShapes() {
-        image1 = Image("ollie_pic")
-        image2 = Image("ollie_pic")
+        image1 = Image("rocket")
+        image2 = Image("rocket")
     
         image1.center = self.canvas.center;
     

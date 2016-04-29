@@ -17,11 +17,11 @@ class Views21: CanvasController {
     override func setup() {
 
     setupImages()
-    still.layer?.mask = animated.layer
+//    still.layer?.mask = animated.layer
     }
     
     func setupImages() {
-    still = Image("ollie_pic")
+    still = Image("rocket")!
     still.height = 240.0
     still.center = self.canvas.center
 self.canvas.add(still)

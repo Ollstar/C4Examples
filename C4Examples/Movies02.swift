@@ -29,4 +29,5 @@ class Movies02: CanvasController {
         self.canvas.add(movie)
     }
     
+    
 }

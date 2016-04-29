@@ -22,7 +22,7 @@ class Advanced06: CanvasController {
     }
     
     func setupShapes() {
-        img = Image("ollie_pic")
+        img = Image("rocket")
         img.height = self.canvas.height
         container = Rectangle(frame: Rect(0,0,300, self.canvas.height))
         container.fillColor = Color(UIColor.clearColor())

@@ -18,7 +18,7 @@ class Shapes05 : CanvasController {
         
         //create a shape using a string and font
         let textShape = TextShape(text:"C4", font: f)!
-        textShape.center = self.canvas.center;
+        textShape.center = self.canvas.center
         
         //add the shape to the canvas
         canvas.add(textShape)

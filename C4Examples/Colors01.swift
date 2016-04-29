@@ -182,10 +182,10 @@ class Colors01: CanvasController {
         rect.origin = shapeOrigin
         
         //You can create colors using images as well...
-        let fillPattern = Image("ollie_pic")!
+        let fillPattern = Image("rocket")!
         rect.fillColor = Color(UIColor(patternImage: fillPattern.uiimage))
         //Here we use a transparent fill pattern for the outline
-        let strokePattern = Image("ollie_pic")!
+        let strokePattern = Image("rocket")!
         rect.strokeColor = Color(UIColor(patternImage: strokePattern.uiimage))
         
         self.canvas.add(rect)

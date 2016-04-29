@@ -14,7 +14,7 @@ class Views17: CanvasController {
     var s:Ellipse!
     
     override func setup() {
-        img = Image("ollie_pic")
+        img = Image("rocket")
         s = Ellipse(frame: Rect(0, 0, img.height, img.height))
         
         img.center = self.canvas.center

@@ -37,9 +37,9 @@ class Shapes09: CanvasController {
         //animate them after a short wait
         
         let anim = ViewAnimation(duration:1.0) {
-            line1.endPoints = (line1.endPoints.0,Point(line1.endPoints.0.x, line1.endPoints.0.y-100))
+            line1.endPoints.1 = Point(line1.endPoints.0.x, line1.endPoints.0.y-100)
 
-           line2.endPoints = (Point(line2.endPoints.1.x, line2.endPoints.1.y+100), line2.endPoints.1)
+            line2.endPoints.0 = Point(line2.endPoints.1.x, line2.endPoints.1.y+100)
 
         }
         
