@@ -8,18 +8,6 @@
 
 import C4
 
-protocol Player {
-    var movie: Movie { get }
-    
-    var audioPlayer: AudioPlayer { get }
-    
-}
-
-extension CanvasController: Player {
-    public override func viewWillDisappear(animated: Bool) {
-    }
-}
-
 class Movies01: CanvasController {
     
     var playIfTrue = true

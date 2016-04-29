@@ -41,7 +41,6 @@ class ViewController: CanvasController {
     
         }.start()
     }
-    
     func addFirstExample() {
         if let example = examples.first {
             self.addChildViewController(example)

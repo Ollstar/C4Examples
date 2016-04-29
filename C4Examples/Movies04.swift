@@ -22,7 +22,7 @@ class Movies04: CanvasController {
         }
         a.repeats = false
         a.autoreverses = true
-        canvas.addTapGestureRecognizer { (location, state) -> () in
+        canvas.addTapGestureRecognizer { (center, location, state) -> () in
             a.animate()
         }
         
